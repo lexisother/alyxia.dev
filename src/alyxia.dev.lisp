@@ -4,7 +4,7 @@
 (defclass alyxia.dev (syte)
   ()
   (:default-initargs
-    :names '("alyxia.dev" "localhost")
+    :names '("lisp.alyxia.dev" "alyxia.dev" "localhost")
     :root (asdf:system-relative-pathname 'alyxia.dev
                                          "src/root/")))
 
