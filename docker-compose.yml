@@ -1,0 +1,42 @@
+version: '3.8'
+
+x-common-variables: &common-variables
+  DOCKER_RUNNING: 'true'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx.Dockerfile
+    ports:
+      - '81:80'
+    depends_on:
+      - app
+    logging:
+      driver: 'local'
+    volumes:
+      - type: volume
+        source: public-content
+        target: /var/www/alyxiadev/static
+        volume:
+          nocopy: true
+    environment:
+      <<: *common-variables
+
+  app:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: docker/app.Dockerfile
+    ports:
+      - '7379:7379'
+    logging:
+      driver: 'local'
+    volumes:
+      - quicklisp:/root/quicklisp
+      - public-content:/usr/src/app/public
+
+volumes:
+  quicklisp:
+  public-content:
