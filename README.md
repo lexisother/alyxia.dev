@@ -1,9 +1,5 @@
 # alyxia.dev-lisp
-### _Your Name <your.name@example.com>_
 
-This is a project to do ... something.
+Personal website project using [Common Lisp](https://common-lisp.net/) and the [Sytes](https://lisperator.net/sytes/) library.
 
-## License
-
-Specify license here
-
+## [License](./LICENSE)
