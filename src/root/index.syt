@@ -1,25 +1,4 @@
+<h1>{(@attr 'TITLE "Hello world")}</h1>
+<p>This is your first Syte.</p>
+
 ;; vim: set ft=html:
-{[define title "Hello world!"]}
-<html>
-  <head>
-    <title>{title}</title>
-    <link href="/s/css/style.css" type="text/css" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- page header -->
-    <div class="header">
-      This is the header
-    </div>
-    <!-- page body -->
-    <div class="body">
-      <h1>{title}</h1>
-      <p>
-        This is your first Syte.
-      </p>
-    </div>
-    <!-- page footer -->
-    <div class="footer">
-      This is the footer
-    </div>
-  </body>
-</html>

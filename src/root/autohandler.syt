@@ -1,0 +1,14 @@
+{[define CONTENT (call-next)]}
+<html>
+  <head>
+    <title>{(@attr 'TITLE)}</title>
+    <link rel="stylesheet" type="text/css" href="/s/css/style.css" />
+  </head>
+  <body>
+    <div class="header">This is the header</div>
+    <div class="body">{CONTENT}</div>
+    <div class="footer">This is the footer</div>
+  </body>
+</html>
+
+;; vim: set ft=html:

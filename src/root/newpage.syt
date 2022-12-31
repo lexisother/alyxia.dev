@@ -1,0 +1,4 @@
+<h1>{(@attr 'TITLE "My second page")}</h1>
+<p>Lorem ipsum.</p>
+
+;; vim: set ft=html:
