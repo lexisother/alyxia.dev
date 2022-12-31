@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: docker/nginx.Dockerfile
     ports:
-      - '81:80'
+      - '${PORT}:80'
     depends_on:
       - app
     logging:
