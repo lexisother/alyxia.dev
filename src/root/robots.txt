@@ -1,2 +1,6 @@
+{[progn
+  (http/set-content-type "text-plain; charset=UTF-8")
+  (@inherit nil)
+]}~
 User-agent: *
 Disallow: /s/
