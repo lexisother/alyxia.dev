@@ -36,6 +36,9 @@ services:
     volumes:
       - quicklisp:/root/quicklisp
       - public-content:/usr/src/app/public
+      - type: bind
+        source: ./src/root
+        target: /usr/src/app/src/root
 
 volumes:
   quicklisp:
