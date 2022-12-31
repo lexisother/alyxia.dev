@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>{title}</title>
+    <link href="/s/css/style.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
     <!-- page header -->
