@@ -7,8 +7,12 @@
   :build-pathname "website"
   :entry-point "alyxia.dev::main"
   :serial t
-  :depends-on (#:sytes)
+  :depends-on (#:sytes
+               #:local-time
+               #:cl-json
+               #:osicat)
   :components ((:module "src"
                         :components
                         ((:file "package")
-                         (:file "alyxia.dev")))))
+                         (:file "alyxia.dev")
+                         (:file "utils")))))

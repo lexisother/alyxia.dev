@@ -9,9 +9,29 @@
                                          "src/root/")))
 
 ;; create the Syte instance
-(defparameter *site* (make-instance 'alyxia.dev))
+(defparameter *syte* (make-instance 'alyxia.dev))
 ;; register it with Sytes
-(register-syte *site*)
+(register-syte *syte*)
+
+(sytes:def-syte-primitive *syte* "fetch-projects"
+                          (lambda (path)
+                            (print path)))
+
+(defparameter *data-directory* "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/temp/projects")
+(loop for f in (list-directory *data-directory*) do
+      (let ((in (open f)))
+        (json:with-decoder-simple-list-semantics
+          (simple-json-bind (name) in
+                            (format t "Name: ~A~%" name)))))
+
+; (sytes:def-syte-primitive *syte* "fetch-projects"
+;                           (lambda (path)
+;                             (loop for f in (list-directory path) do
+;                                   (let ((in (open f)))
+;                                     (json:with-decoder-simple-list-semantics
+;                                       (simple-json-bind (name) in
+;                                                         (format t "Name: ~A~%" name)))))))
+
 
 (defun main (&optional args)
   (declare (ignore args))
