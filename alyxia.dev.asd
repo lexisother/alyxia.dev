@@ -14,5 +14,4 @@
   :components ((:module "src"
                         :components
                         ((:file "package")
-                         (:file "alyxia.dev")
-                         (:file "utils")))))
+                         (:file "alyxia.dev")))))

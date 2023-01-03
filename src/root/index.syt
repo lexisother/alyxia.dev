@@ -1,8 +1,7 @@
-{[define data-dir "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/temp/projects"]}
+{[define projects (fetch-projects "/home/alyxia/Documents/gitrepos/ad/temp/projects")]}
 
-<h1>{(@attr 'TITLE "Hello world")}</h1>
-<p>This is your first Syte.</p>
-
-{(fetch-projects data-dir)}
+{foreach proj projects {
+  <h1><a href="{proj.url}">{\proj.name}</a></h1>
+}}
 
 ;; vim: set ft=html:

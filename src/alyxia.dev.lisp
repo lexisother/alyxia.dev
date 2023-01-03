@@ -15,23 +15,11 @@
 
 (sytes:def-syte-primitive *syte* "fetch-projects"
                           (lambda (path)
-                            (print path)))
-
-(defparameter *data-directory* "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/temp/projects")
-(loop for f in (list-directory *data-directory*) do
-      (let ((in (open f)))
-        (json:with-decoder-simple-list-semantics
-          (simple-json-bind (name) in
-                            (format t "Name: ~A~%" name)))))
-
-; (sytes:def-syte-primitive *syte* "fetch-projects"
-;                           (lambda (path)
-;                             (loop for f in (list-directory path) do
-;                                   (let ((in (open f)))
-;                                     (json:with-decoder-simple-list-semantics
-;                                       (simple-json-bind (name) in
-;                                                         (format t "Name: ~A~%" name)))))))
-
+                            (loop for filename in (list-directory path)
+                                  collecting (with-open-file (stream filename)
+                                               (let ((json:*json-identifier-name-to-lisp* #'identity))
+                                                 (json:with-decoder-simple-list-semantics
+                                                   (json:decode-json stream)))))))
 
 (defun main (&optional args)
   (declare (ignore args))
