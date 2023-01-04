@@ -13,13 +13,28 @@
 ;; register it with Sytes
 (register-syte *syte*)
 
+; {[define-filter test (owner name)
+;   (if (not (eq owner "lexisother"))
+;       (concatenate 'string owner "/" name)
+;       (format nil "~A" name))]}
+
+(defun fetch-projects (path)
+  (loop for filename in (list-directory path)
+        collecting (with-open-file (stream filename)
+                     (let ((json:*json-identifier-name-to-lisp* #'identity))
+                       (json:with-decoder-simple-list-semantics
+                         (json:decode-json stream))))))
+
 (sytes:def-syte-primitive *syte* "fetch-projects"
                           (lambda (path)
-                            (loop for filename in (list-directory path)
-                                  collecting (with-open-file (stream filename)
-                                               (let ((json:*json-identifier-name-to-lisp* #'identity))
-                                                 (json:with-decoder-simple-list-semantics
-                                                   (json:decode-json stream)))))))
+                            (fetch-projects path)))
+
+(sytes:def-syte-primitive *syte* "sort-projects-by-date"
+                          (lambda (projs)
+                            (sort projs (lambda (a b)
+                                          (defparameter ua (local-time:parse-timestring (cdr (assoc :|updated| a))))
+                                          (defparameter ub (local-time:parse-timestring (cdr (assoc :|updated| b))))
+                                          (local-time:timestamp> ua ub)))))
 
 (defun main (&optional args)
   (declare (ignore args))

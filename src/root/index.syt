@@ -1,7 +1,22 @@
 {[define projects (fetch-projects "/home/alyxia/Documents/gitrepos/ad/temp/projects")]}
+{[define projects-sorted (sort-projects-by-date projects)]}
 
-{foreach proj projects {
-  <h1><a href="{proj.url}">{\proj.name}</a></h1>
+;; On one hand, it'd be funny to turn this into a filter.
+;; On the other, I don't know how to pass multiple arguments to filters.
+;; On top of that, it makes more sense for this to be a function anyways. Like
+;; a little React element.
+{[defun project (owner name)
+  (if (eq owner nil)
+    {<p>{name}</p>}
+    {<p>{owner}/{name}</p>})]}
+
+{foreach proj projects-sorted {
+  <h1>
+    <a href="{proj.url}">
+      {project proj.owner proj.name}
+    </a>
+    {proj.updated}
+  </h1>
 }}
 
 ;; vim: set ft=html:
