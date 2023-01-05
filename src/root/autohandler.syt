@@ -1,12 +1,28 @@
-{[define CONTENT (call-next)]}
+{[define content (call-next)]}~
+{[defun gettitle ()
+  (if (eq (@attr 'TITLE) nil)
+      (string "Alyxia Sother")
+      (concatenate (@attr 'TITLE) " | Alyxia Sother"))]}
+
 <html>
   <head>
-    <title>{(@attr 'TITLE)}</title>
-    <link rel="stylesheet" type="text/css" href="/s/css/style.css" />
+    <title>{(gettitle)}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/s/css/index.css">
+    <link rel="stylesheet" href="/s/css/common.css" />
+    <link rel="stylesheet" href="/s/css/sanitize.css">
+    <link rel="stylesheet" href="/s/css/static.css" />
+
+    {(foreach style (reverse (@attr 'STYLES))
+       {<link rel="stylesheet" type="text/css" href="{\style}" />})}
+    <!-- END:Styles -->
   </head>
   <body>
     <div class="header">This is the header</div>
-    <div class="body">{CONTENT}</div>
+    <div class="body">{content}</div>
     <div class="footer">This is the footer</div>
   </body>
 </html>

@@ -18,6 +18,9 @@
 ;       (concatenate 'string owner "/" name)
 ;       (format nil "~A" name))]}
 
+;; TODO: Move these primitives to a separate file
+
+;; author: Mishoo
 (defun fetch-projects (path)
   (loop for filename in (list-directory path)
         collecting (with-open-file (stream filename)
@@ -35,6 +38,11 @@
                                           (defparameter ua (local-time:parse-timestring (cdr (assoc :|updated| a))))
                                           (defparameter ub (local-time:parse-timestring (cdr (assoc :|updated| b))))
                                           (local-time:timestamp> ua ub)))))
+
+(sytes:def-syte-primitive *syte* "string" #'string)
+(sytes:def-syte-primitive *syte* "concatenate"
+                          (lambda (&rest args)
+                            (apply #'concatenate 'string args)))
 
 (defun main (&optional args)
   (declare (ignore args))
