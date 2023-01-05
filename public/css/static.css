@@ -1,0 +1,50 @@
+body::before {
+  content: '';
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: calc(100% + 32px);
+  height: calc(100% + 32px);
+  background-image: url('/s/img/scan.png');
+  background-position: 0 0;
+  background-repeat: repeat;
+  z-index: 10000000;
+  animation: scan-animation-left 2s linear infinite;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+body::after {
+  content: '';
+  display: block;
+  position: fixed;
+  left: -32px;
+  top: 0;
+  width: calc(100% + 32px);
+  height: calc(100% + 32px);
+  background-image: url('/s/img/scan.png');
+  background-position: 0 0;
+  background-repeat: repeat;
+  z-index: 10000000;
+  animation: scan-animation-right 0.4s linear infinite;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+@keyframes scan-animation-left {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  100% {
+    transform: translateX(-32px) translateY(-32px);
+  }
+}
+@keyframes scan-animation-right {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  100% {
+    transform: translateX(32px) translateY(-32px);
+  }
+}

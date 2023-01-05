@@ -10,3 +10,10 @@
   border-top: 1px solid #000;
   text-align: center;
 }
+
+.introduction {
+  font-family: '04b03';
+  text-align: center;
+  color: var(--white);
+  padding: 0 3em 0 3em;
+}

@@ -1,0 +1,46 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #000;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: 1px solid var(--white);
+}
+
+:root {
+  --aqua: #00b8eb;
+  --red: #f00;
+  --yellow: #fffb00;
+  --lime: #00ff1e;
+  --white: #fff;
+  --black: #000;
+  --pink: #ffc0cb;
+}
+
+.lime {
+  color: var(--lime);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.red {
+  color: var(--red);
+}
+
+.aqua {
+  color: var(--aqua);
+}
+
+@font-face {
+  font-family: '04b03';
+  src: url('/s/font/04b03.woff2') format('woff2');
+}
