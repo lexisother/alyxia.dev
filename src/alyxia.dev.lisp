@@ -28,6 +28,10 @@
                        (json:with-decoder-simple-list-semantics
                          (json:decode-json stream))))))
 
+(sytes:def-syte-primitive *syte* "docker-running"
+                          (lambda ()
+                            (uiop:getenv "DOCKER_RUNNING")))
+
 (sytes:def-syte-primitive *syte* "fetch-projects"
                           (lambda (path)
                             (fetch-projects path)))

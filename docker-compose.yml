@@ -39,6 +39,8 @@ services:
       - type: bind
         source: ./src/root
         target: /usr/src/app/src/root
+    environment:
+      <<: *common-variables
 
 volumes:
   quicklisp:

@@ -1,4 +1,6 @@
-{[define projects (fetch-projects "/home/alyxia/Documents/gitrepos/ad/temp/projects")]}
+{[define projects (fetch-projects (if (not (docker-running))
+                                      (string "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/projects")
+                                      (string "/usr/src/app/projects")))]}
 {[define projects-sorted (sort-projects-by-date projects)]}
 
 ;; On one hand, it'd be funny to turn this into a filter.
