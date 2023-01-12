@@ -11,9 +11,37 @@
   text-align: center;
 }
 
+/* Smol screen {{{ */
+
 .introduction {
   font-family: '04b03';
   text-align: center;
   color: var(--white);
   padding: 0 3em 0 3em;
 }
+
+.introduction__header {
+  word-wrap: normal;
+  font-size: 1.8rem;
+}
+
+.introduction__text {
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+/* }}} */
+
+/* Beeg screen {{{ */
+@media only screen and (min-width: 1200px) {
+  .introduction__header {
+    font-size: 4rem;
+  }
+
+  .introduction__text {
+    font-size: 2.3rem;
+    padding-left: 8em;
+    padding-right: 8em;
+  }
+}
+/* }}} */

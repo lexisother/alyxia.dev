@@ -1,5 +1,5 @@
-<p>Lorem ipsum.</p>
-
-<div class="introduction">Hello!</div>
+<div class="introduction">
+  <div class="introduction__header">Hello!</div>
+</div>
 
 ;; vim: set ft=html:
