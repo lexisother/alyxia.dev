@@ -5,6 +5,7 @@ x-common-variables: &common-variables
 
 services:
   nginx:
+    image: alyxiadev-lisp_nginx
     build:
       context: .
       dockerfile: docker/nginx.Dockerfile
@@ -24,6 +25,7 @@ services:
       <<: *common-variables
 
   app:
+    image: alyxiadev-lisp_app
     stdin_open: true
     tty: true
     build:
