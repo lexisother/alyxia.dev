@@ -1,4 +1,6 @@
+<!-- prettier-ignore -->
 {[define content (call-next)]}~
+<!-- prettier-ignore -->
 {[defun gettitle ()
   (if (eq (@attr 'TITLE) nil)
       (string "Alyxia Sother")
@@ -9,21 +11,28 @@
     <title>{(gettitle)}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
 
-
     <!-- Styles -->
-    <link rel="stylesheet" href="/s/css/index.css">
+    <link rel="stylesheet" href="/s/css/index.css" />
     <link rel="stylesheet" href="/s/css/common.css" />
-    <link rel="stylesheet" href="/s/css/sanitize.css">
+    <link rel="stylesheet" href="/s/css/sanitize.css" />
     <link rel="stylesheet" href="/s/css/static.css" />
 
-    {(foreach style (reverse (@attr 'STYLES))
-       {<link rel="stylesheet" type="text/css" href="{\style}" />})}
+    {(foreach style (reverse (@attr 'STYLES)) {
+    <link rel="stylesheet" type="text/css" href="{\style}" />
+    })}
     <!-- END:Styles -->
   </head>
   <body>
-    <div class="header">This is the header</div>
+    <div class="header">
+      <div class="topbar">
+        <p class="marquee-text">my nuts are in severe pain</p>
+      </div>
+      <div class="topbar staticbar">
+        <p>{\{<BREADCRUMBS HERE>}}</p>
+      </div>
+      <img src="/s/img/headerlogo.png" alt="" class="toplogo" />
+    </div>
     <div class="body">{content}</div>
-    <div class="footer">This is the footer</div>
   </body>
 </html>
 
