@@ -15,6 +15,18 @@
                                           (defparameter ub (local-time:parse-timestring (cdr (assoc :|updated| b))))
                                           (local-time:timestamp> ua ub)))))
 
+(sytes:def-syte-primitive *syte* "fetch-posts"
+                          (lambda (path)
+                            (fetch-posts path)))
+
+(sytes:def-syte-primitive *syte* "sort-posts-by-date"
+                          (lambda (posts)
+                            (sort posts (lambda (a b)
+                                          (defun get-date (proj) (gethash "date" (car proj)))
+                                          (defparameter ua (local-time:parse-timestring (get-date a)))
+                                          (defparameter ub (local-time:parse-timestring (get-date b)))
+                                          (local-time:timestamp> ua ub)))))
+
 (sytes:def-syte-primitive *syte* "string" #'string)
 (sytes:def-syte-primitive *syte* "concatenate"
                           (lambda (&rest args)

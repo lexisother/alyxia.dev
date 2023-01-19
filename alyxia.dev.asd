@@ -10,6 +10,7 @@
                 :depends-on (#:sytes
                              #:local-time
                              #:cl-json
+                             #:cl-yaml
                              #:osicat)
                 :components ((:module "src"
                                       :components

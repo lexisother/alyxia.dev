@@ -1,0 +1,16 @@
+<!-- prettier-ignore -->
+{[define posts (fetch-posts (if (not (docker-running))
+                                (string "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/blog")
+                                (string "/usr/src/app/blog")))]}
+<!-- prettier-ignore -->
+{[define posts-sorted (sort-posts-by-date posts)]}
+
+{foreach post posts-sorted {
+  <pre>{car post}</pre>
+  <br />
+  <pre>{cdr post}</pre>
+  <br />
+  <br />
+}}
+
+;; vim: set ft=html:
