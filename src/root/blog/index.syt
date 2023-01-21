@@ -8,12 +8,14 @@
     {[define posts-sorted (sort-posts-by-date posts)]}
 
     <h1>{(@attr 'TITLE "Blog")}</h1>
-    {foreach post posts-sorted {
-      {[define meta (car post)]}
-      <div class="post-title">
-          <a href="/blog/{meta.id}"><p>{meta.id}</p></a>
-      </div>
-    }}
+    <div>
+        {foreach post posts-sorted {
+        {[define meta (car post)]}
+        <div class="post-title">
+            <a href="/blog/{meta.id}"><p>{meta.id}</p></a>
+        </div>
+        }}
+    </div>
 }}
 
 ;; vim: set ft=html:

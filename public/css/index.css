@@ -40,14 +40,12 @@
   animation: marquee 30s linear infinite;
 }
 
-/* TODO: Fix this not working */
 .post-title {
   background-attachment: fixed !important;
-  border-bottom: 2px solid var(--white);
-}
-.post-title:first-child {
   border-top: 2px solid var(--white);
-  border-bottom: none;
+}
+.post-title:last-child {
+  border-bottom: 2px solid var(--white);
 }
 
 @keyframes marquee {
