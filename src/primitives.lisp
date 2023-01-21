@@ -1,5 +1,14 @@
 (in-package #:alyxia.dev)
 
+(sytes:def-url-handler (*syte* "^/blog/(.*)$" id)
+                       (defparameter *projs* (fetch-posts "/usr/src/app/blog"))
+                       (let ((entry (find-if
+                                      (lambda (x)
+                                        (string= (gethash "id" (car x)) id)) *projs*)))
+                         `(:template "blog/index.syt"
+                           :variables ("metadata" ,(car entry)
+                                       "content" ,(cdr entry)))))
+
 (sytes:def-syte-primitive *syte* "docker-running"
                           (lambda ()
                             (uiop:getenv "DOCKER_RUNNING")))
