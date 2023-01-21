@@ -40,6 +40,16 @@
   animation: marquee 30s linear infinite;
 }
 
+/* TODO: Fix this not working */
+.post-title {
+  background-attachment: fixed !important;
+  border-bottom: 2px solid var(--white);
+}
+.post-title:first-child {
+  border-top: 2px solid var(--white);
+  border-bottom: none;
+}
+
 @keyframes marquee {
   0% {
     transform: translate(0, 0);
@@ -68,6 +78,17 @@
   font-size: 1.6rem;
 }
 
+.post-title p {
+  text-align: center;
+  color: var(--white);
+  font-family: '04b03';
+  font-size: 2rem;
+  margin: 0.8em;
+  text-shadow: 3px 6px #000, 0px -1px #000, 0px 1px #000, -1px 0px #000, 1px 0px #000,
+    -1px -1px #000, 1px 1px #000, -1px 1px #000, 1px -1px #000;
+  margin: 0;
+}
+
 /* }}} */
 
 /* Beeg screen {{{ */
@@ -80,6 +101,10 @@
     font-size: 2.3rem;
     padding-left: 8em;
     padding-right: 8em;
+  }
+
+  .post-title p {
+    font-size: 6rem;
   }
 }
 /* }}} */

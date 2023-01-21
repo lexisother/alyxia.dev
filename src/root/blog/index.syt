@@ -1,4 +1,5 @@
 {if content {
+    <h1>{(@attr 'TITLE metadata.title)}</h1>
     <pre>{content}</pre>
 } {
     {[define posts (fetch-posts (if (not (docker-running))
@@ -6,12 +7,12 @@
                                     (string "/usr/src/app/blog")))]}
     {[define posts-sorted (sort-posts-by-date posts)]}
 
+    <h1>{(@attr 'TITLE "Blog")}</h1>
     {foreach post posts-sorted {
-      <pre>{car post}</pre>
-      <br />
-      <pre>{cdr post}</pre>
-      <br />
-      <br />
+      {[define meta (car post)]}
+      <div class="post-title">
+          <a href="/blog/{meta.id}"><p>{meta.id}</p></a>
+      </div>
     }}
 }}
 
