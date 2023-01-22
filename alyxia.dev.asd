@@ -11,7 +11,9 @@
                              #:local-time
                              #:cl-json
                              #:cl-yaml
-                             #:osicat)
+                             #:osicat
+                             #:3bmd
+                             #:3bmd-ext-code-blocks)
                 :components ((:module "src"
                                       :components
                                       ((:file "package")

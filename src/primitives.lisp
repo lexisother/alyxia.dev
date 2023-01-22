@@ -36,6 +36,15 @@
                                           (defparameter ub (local-time:parse-timestring (get-date b)))
                                           (local-time:timestamp> ua ub)))))
 
+(sytes:def-syte-primitive *syte* "md"
+                          (lambda (text)
+                            (setf 3bmd-code-blocks:*code-blocks* t)
+                            (setf 3bmd-code-blocks:*renderer* :chroma)
+                            (setf streame (with-output-to-string (str)
+                                            ;; Blegh.
+                                            (3bmd:parse-string-and-print-to-stream (car (car text)) str)))
+                            (string streame)))
+
 (sytes:def-syte-primitive *syte* "string" #'string)
 (sytes:def-syte-primitive *syte* "concatenate"
                           (lambda (&rest args)
