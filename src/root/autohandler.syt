@@ -3,8 +3,8 @@
 <!-- prettier-ignore -->
 {[defun gettitle ()
   (if (eq (@attr 'TITLE) nil)
-      (string "Alyxia Sother")
-      (concatenate (@attr 'TITLE) " | Alyxia Sother"))]}
+    (string "Alyxia Sother")
+    (concatenate (@attr 'TITLE) " | Alyxia Sother"))]}
 
 <html>
   <head>

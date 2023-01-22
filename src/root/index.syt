@@ -2,4 +2,7 @@
   <div class="introduction__header">Hello!</div>
 </div>
 
+{img "test.png"}
+{img "test.png" "hi"}
+
 ;; vim: set ft=html:

@@ -1,0 +1,10 @@
+{(progn
+
+   (defun img (name id)
+     (if (not (eq id nil))
+       {<img src="/s/img/blog/{id}/{name}">}
+       {<img src="/s/img/{name}" />}))
+
+)}
+
+;; vim: set ft=lisp:
