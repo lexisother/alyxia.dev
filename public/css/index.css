@@ -36,6 +36,49 @@
   margin-right: 2rem;
 }
 
+/* Knobs {{{ */
+.knob-row {
+  display: flex;
+  gap: 5em;
+  padding: 0 1em;
+  margin-left: 150px;
+  transform: translateY(-1px);
+  overflow-y: clip;
+}
+
+.knob {
+  color: white;
+  font-family: '04b03';
+  font-size: 1.5em; /* when adjusting font size be sure to adjust the .knob-row gap */
+  line-height: 1;
+  padding: 0 0.2em;
+  background-color: black;
+  border-bottom: 1px solid white;
+  position: relative;
+  width: fit-content;
+}
+
+.knob::before {
+  content: '';
+  width: 1em;
+  position: absolute;
+  border-bottom: 1px solid white;
+  background-color: black;
+  height: calc(1em + 1px);
+  transform: translateX(calc(-100% - 0.2em)) translateY(-0.5em) skewY(45deg);
+}
+
+.knob::after {
+  content: '';
+  width: 1em;
+  position: absolute;
+  border-bottom: 1px solid white;
+  background-color: black;
+  height: calc(1em + 1px);
+  transform: translateX(0.2em) translateY(-0.5em) skewY(-45deg);
+}
+/* }}} */
+
 .marquee-text {
   animation: marquee 30s linear infinite;
 }

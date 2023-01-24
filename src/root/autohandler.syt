@@ -30,6 +30,11 @@
       <div class="topbar staticbar">
         <p>{\{<BREADCRUMBS HERE>}}</p>
       </div>
+      <div class="knob-row">
+        <div class="knob"><span>knob 1</span></div>
+        <div class="knob"><span>knob 1</span></div>
+        <div class="knob"><span>knob 1</span></div>
+      </div>
       <img src="/s/img/headerlogo.png" alt="" class="toplogo" />
     </div>
     <div class="body">{content}</div>
