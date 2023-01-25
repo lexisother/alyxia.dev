@@ -31,11 +31,16 @@
         <p>{\{<BREADCRUMBS HERE>}}</p>
       </div>
       <div class="knob-row">
-        <div class="knob"><span>knob 1</span></div>
-        <div class="knob"><span>knob 1</span></div>
-        <div class="knob"><span>knob 1</span></div>
+        <a href="/projects">
+          <div class="knob"><span>PROJECTS</span></div>
+        </a>
+        <a href="/blog">
+          <div class="knob"><span>BLOG</span></div>
+        </a>
       </div>
-      <img src="/s/img/headerlogo.png" alt="" class="toplogo" />
+      <a href="/">
+        <img src="/s/img/headerlogo.png" alt="" class="toplogo" />
+      </a>
     </div>
     <div class="body">{content}</div>
   </body>
