@@ -1,3 +1,4 @@
+/* Header {{{ */
 .toplogo {
   position: fixed;
   z-index: 2;
@@ -35,6 +36,19 @@
   padding-left: 0;
   margin-right: 2rem;
 }
+
+.marquee-text {
+  animation: marquee 30s linear infinite;
+}
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+/* }}} */
 
 /* Knobs {{{ */
 .knob-row {
@@ -79,29 +93,7 @@
 }
 /* }}} */
 
-.marquee-text {
-  animation: marquee 30s linear infinite;
-}
-
-.post-title {
-  background-attachment: fixed !important;
-  border-top: 2px solid var(--white);
-}
-.post-title:last-child {
-  border-bottom: 2px solid var(--white);
-}
-
-@keyframes marquee {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-100%, 0);
-  }
-}
-
-/* Smol screen {{{ */
-
+/* Main page {{{ */
 .introduction {
   font-family: '04b03';
   text-align: center;
@@ -118,7 +110,14 @@
   text-align: left;
   font-size: 1.6rem;
 }
+/* }}} */
 
+/* Blog {{{ */
+.post-title {
+  background-attachment: fixed !important;
+  border-top: 2px solid var(--white);
+  border-image: url('/s/img/separate.png');
+}
 .post-title p {
   text-align: center;
   color: var(--white);
@@ -129,7 +128,9 @@
     -1px -1px #000, 1px 1px #000, -1px 1px #000, 1px -1px #000;
   margin: 0;
 }
-
+.post-title:last-child {
+  border-bottom: 2px solid var(--white);
+}
 /* }}} */
 
 /* Beeg screen {{{ */

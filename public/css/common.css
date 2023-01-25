@@ -44,3 +44,11 @@ hr {
   font-family: '04b03';
   src: url('/s/font/04b03.woff2') format('woff2');
 }
+
+/* Re-used components {{{ */
+.separate {
+  width: 100%;
+  height: 32px;
+  background-image: url('/s/img/separate.png');
+}
+/* }}} */
