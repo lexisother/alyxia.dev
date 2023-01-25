@@ -31,12 +31,8 @@
         <p>{\{<BREADCRUMBS HERE>}}</p>
       </div>
       <div class="knob-row">
-        <a href="/projects">
-          <div class="knob"><span>PROJECTS</span></div>
-        </a>
-        <a href="/blog">
-          <div class="knob"><span>BLOG</span></div>
-        </a>
+        {knob "PROJECTS" "/projects"}
+        {knob "BLOG"     "/blog"    }
       </div>
       <a href="/">
         <img src="/s/img/headerlogo.png" alt="" class="toplogo" />

@@ -59,37 +59,23 @@
   transform: translateY(-1px);
   overflow-y: clip;
 }
-
 .knob {
-  color: white;
   font-family: '04b03';
-  font-size: 1.5em; /* when adjusting font size be sure to adjust the .knob-row gap */
-  line-height: 1;
-  padding: 0 0.2em;
-  background-color: black;
-  border-bottom: 1px solid white;
-  position: relative;
-  width: fit-content;
+  font-size: 16px;
+  height: 24px;
+  color: white;
+  transform: translateY(-1px);
 }
 
-.knob::before {
-  content: '';
-  width: 1em;
-  position: absolute;
-  border-bottom: 1px solid white;
-  background-color: black;
-  height: calc(1em + 1px);
-  transform: translateX(calc(-100% - 0.2em)) translateY(-0.5em) skewY(45deg);
+.knob > svg {
+  height: 24px;
 }
 
-.knob::after {
-  content: '';
-  width: 1em;
-  position: absolute;
-  border-bottom: 1px solid white;
+.knob > span {
+  display: inline-block;
   background-color: black;
-  height: calc(1em + 1px);
-  transform: translateX(0.2em) translateY(-0.5em) skewY(-45deg);
+  height: calc(24px - 0.7px); /* what the actual fuck */
+  box-shadow: inset 0 -1px 0 white, 0 -1px 0 black;
 }
 /* }}} */
 
