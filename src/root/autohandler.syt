@@ -35,7 +35,7 @@
         {knob "BLOG"     "/blog"    }
       </div>
       <a href="/">
-        <img src="/s/img/headerlogo.png" alt="" class="toplogo" />
+        {(headerlogo)}
       </a>
     </div>
     <div class="body">{content}</div>
