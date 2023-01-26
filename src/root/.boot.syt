@@ -26,17 +26,17 @@
       </svg>})
 
    (defun knob (text link)
-     {<a href="{link}">
-        <div class="knob">
-          <svg viewBox="0 0 24 24">
-            <path d="M 0,0 L 23,23 L 24,23 L 24,0" stroke="none" fill="black" />
-            <polyline points="0,0 23,23 24,23" fill="none" stroke="white" shape-rendering="crispEdges" />
-          </svg><span>{text}</span><svg viewBox="0 0 24 24">
-            <path d="M 0,0 L 24,0 L 1,23 L 0,23" stroke="none" fill="black" />
-            <polyline points="24,0 1,23 0,23" fill="none" stroke="white" shape-rendering="crispEdges" />
-          </svg>
-        </div>
-      </a>})
+    {<a href="{link}">
+       <div class="knob">
+         <svg viewBox="0 0 24 24">
+           <polygon points="0,0 24,0 24,24" stroke="none" fill="black" />
+           <polyline points="0,0 24,24" fill="none" stroke="white" stroke-width="1.5px" />
+         </svg><span>{text}</span><svg viewBox="0 0 24 24">
+           <polygon points="0,0 24,0 0,24" stroke="none" fill="black" />
+           <polyline points="24,0 0,24" fill="none" stroke="white" stroke-width="1.5px" />
+         </svg>
+       </div>
+     </a>})
 
 )}
 
