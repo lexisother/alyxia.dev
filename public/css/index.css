@@ -102,7 +102,6 @@
 .post-title {
   background-attachment: fixed !important;
   border-top: 2px solid var(--white);
-  border-image: url('/s/img/separate.png');
 }
 .post-title p {
   text-align: center;
