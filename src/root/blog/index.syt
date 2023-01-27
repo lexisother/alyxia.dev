@@ -1,6 +1,6 @@
 {if content {
     <h1>{(@attr 'TITLE metadata.title)}</h1>
-    <pre>{md content}</pre>
+    {md content}
 } {
     {[define posts (fetch-posts (if (not (docker-running))
                                     (string "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/blog")

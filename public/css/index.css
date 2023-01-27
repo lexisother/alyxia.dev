@@ -1,4 +1,8 @@
 /* Header {{{ */
+.header {
+  font-size: 62.5%;
+  line-height: 24px;
+}
 .toplogo {
   position: fixed;
   z-index: 2;

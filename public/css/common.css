@@ -1,9 +1,17 @@
 html {
   font-size: 62.5%;
+  font-family: '04b03', sans-serif;
 }
 
 body {
   background: #000;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+}
+
+h1 {
+  font-family: Heading;
 }
 
 a {
@@ -42,7 +50,17 @@ hr {
 
 @font-face {
   font-family: '04b03';
-  src: url('/s/font/04b03.woff2') format('woff2');
+  src: url('/s/font/04b03.woff2');
+}
+
+@font-face {
+  font-family: 'Paragraph';
+  src: url(/s/font/paragraph.ttf);
+}
+
+@font-face {
+  font-family: 'Heading';
+  src: url(/s/font/heading.woff);
 }
 
 /* Re-used components {{{ */
@@ -51,4 +69,5 @@ hr {
   height: 32px;
   background-image: url('/s/img/separate.png');
 }
+
 /* }}} */
