@@ -1,18 +1,24 @@
 {if content {
-    <h1>{(@attr 'TITLE metadata.title)}</h1>
-    {md content}
+    <div class="post-title post-header">
+        <p>{(@attr 'TITLE metadata.title)}</p>
+    </div>
+    <div class="post-container">
+        <div class="post-content">
+            {md content}
+        </div>
+    </div>
 } {
     {[define posts (fetch-posts (if (not (docker-running))
                                     (string "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/blog")
                                     (string "/usr/src/app/blog")))]}
     {[define posts-sorted (sort-posts-by-date posts)]}
 
-    <h1>{(@attr 'TITLE "Blog")}</h1>
-    <div>
+    <h1 class="page-header">{(@attr 'TITLE "Blog")}</h1>
+    <div class="post-list">
         {foreach post posts-sorted {
         {[define meta (car post)]}
         <div class="post-title">
-            <a href="/blog/{meta.id}"><p>{meta.id}</p></a>
+            <a href="/blog/{meta.id}"><p>{meta.title}</p></a>
         </div>
         }}
     </div>
