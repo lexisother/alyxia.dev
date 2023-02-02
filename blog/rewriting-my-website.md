@@ -4,6 +4,9 @@ title: 'Rewriting my website'
 date: '2022-05-05T22:00:00'
 ---
 
+<!-- TODO: switch alyxia.dev out for legacy.alyxia.dev -->
+# NOTE: THIS BLOG POST IS OLD! IT WAS WRITTEN FOR THE [LEGACY DOMAIN](https://alyxia.dev)
+
 Ever since the base for a website was set up for me, I hadn't done anything with it. Though, with time, I started growing more of a need to publish my banter somewhere, y'know?
 
 So, I set out to build something that was truly comfortable for me to work with, something I was both already familiar with, but something I could also experiment with.
