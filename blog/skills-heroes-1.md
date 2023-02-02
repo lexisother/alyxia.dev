@@ -1,7 +1,7 @@
 ---
 id: 'skills-heroes-1'
 title: 'Skills Heroes Round 1'
-date: '2021-11-24T00:00:00'
+date: '2022-11-24T00:00:00'
 ---
 
 This post is about my participation in the national [Skills Heroes](https://worldskillsnetherlands.nl/skillsheroes/) championship. It's a competition for students in the Dutch [MBO](https://en.wikipedia.org/wiki/Education_in_the_Netherlands#MBO) education.
