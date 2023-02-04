@@ -130,8 +130,8 @@
 .post-container {
   flex: 1;
   padding: 3rem;
-  background-color: #000;
-  background-image: url(/s/img/post-bg.png);
+  /* Fake gradient to darken the image */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/s/img/post-bg.png);
   background-attachment: fixed;
   background-position: center;
 }
