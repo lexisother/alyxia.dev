@@ -11,6 +11,13 @@
 ;; create the Syte instance
 (defparameter *syte* (make-instance 'alyxia.dev))
 
+;; Global variables {{{
+(defparameter *myAge*
+  (let* ((dob (local-time:parse-timestring "2005-11-28"))
+         (cur (local-time:now)))
+    (local-time:timestamp-whole-year-difference cur dob)))
+;; }}}
+
 ;; author: Mishoo
 (defun fetch-projects (path)
   (loop for filename in (list-directory path)
