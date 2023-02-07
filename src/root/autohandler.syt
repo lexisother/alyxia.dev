@@ -12,12 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/s/css/sanitize.css" />
-    <link rel="stylesheet" href="/s/css/reset.css">
-    <link rel="stylesheet" href="/s/css/reset.css">
-    <link rel="stylesheet" href="/s/css/common.css" />
-    <link rel="stylesheet" href="/s/css/index.css" />
-    <link rel="stylesheet" href="/s/css/static.css" />
+    {[define styles '("sanitize" "reset" "common" "index" "static")]}
+    {foreach style styles {
+      <link rel="stylesheet" href="/s/css/{style}.css" />
+    }}
 
     {(foreach style (reverse (@attr 'STYLES)) {
     <link rel="stylesheet" type="text/css" href="{\style}" />
