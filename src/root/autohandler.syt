@@ -1,15 +1,49 @@
 <!-- prettier-ignore -->
 {[define content (call-next)]}~
 <!-- prettier-ignore -->
-{[defun gettitle ()
+{[define defaults '((title . "Alyxia Sother")
+                    (description . "Alyxia Sother (@lexisother) is a software developer."))]}
+
+;; Now, trust me, it's not like I didn't try to do this in a better way. I
+;; tried creating a map like the above one for `defaults`.
+;; It looked like this: `'((title . (gettitle)))`. However, whenever
+;; referencing a key like `actual.title, it stringifies the S-expression instead
+;; of giving me the expected output.
+<!-- prettier-ignore -->
+{[defun title ()
   (if (eq (@attr 'TITLE) nil)
-    (string "Alyxia Sother")
-    (concatenate (@attr 'TITLE) " | Alyxia Sother"))]}
+    (string defaults.title)
+    (concatenate (@attr 'TITLE) " | " defaults.title))]}
+{[defun description ()
+   (if (eq (@attr 'DESC) nil)
+     (string defaults.description)
+     (@attr 'DESC))]}
+{[defun imageUrl ()
+   (if (not (eq (@attr 'IMAGE) nil))
+     (concatenate "/s/img" (@attr 'IMAGE)))]}
+{[defun rssUrl ()
+  (@attr 'RSS)]}
 
 <html>
   <head>
-    <title>{(gettitle)}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+    <title>{(title)}</title>
+
+    <meta name="description" content="{(description)}">
+
+;; If only I could figure out a good way to autogenerate this metadata.
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{(title)}" />
+    <meta property="og:description" content="{(description)}" />
+    {if (not (eq (imageUrl) nil)) {<meta property="og:image" content="{(imageUrl)}">}}
+
+    <meta name="twitter:title" content="{(title)}" />
+    <meta name="twitter:site" content="@lexisother" />
+    <meta name="twitter:creator" content="@lexisother" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="{(description)}" />
+    {if (not (eq (imageUrl) nil)) {<meta property="twitter:image" content="{(imageUrl)}">}}
 
     <!-- Styles -->
     {[define styles '("sanitize" "reset" "common" "index" "static")]}
@@ -18,7 +52,7 @@
     }}
 
     {(foreach style (reverse (@attr 'STYLES)) {
-    <link rel="stylesheet" type="text/css" href="{\style}" />
+      <link rel="stylesheet" type="text/css" href="{\style}" />
     })}
     <!-- END:Styles -->
   </head>
