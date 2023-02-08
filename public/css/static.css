@@ -1,50 +1,45 @@
-body::before {
+body:before {
   content: '';
-  display: block;
   position: fixed;
   left: 0;
   top: 0;
-  width: calc(100% + 32px);
-  height: calc(100% + 32px);
-  background-image: url('/s/img/scan.png');
-  background-position: 0 0;
-  background-repeat: repeat;
-  z-index: 10000000;
-  animation: scan-animation-left 2s linear infinite;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  opacity: 0.75;
+  z-index: 1000;
+  background-image: url('/s/img/overlay.png');
+  background-repeat: repeat;
+  background-position: 0px 0px;
+  animation-name: Static;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(4);
+  box-shadow: inset 0px 0px 10em rgba(0, 0, 0, 0.4);
 }
 
-body::after {
+body:after {
   content: '';
-  display: block;
   position: fixed;
-  left: -32px;
+  left: 0;
   top: 0;
-  width: calc(100% + 32px);
-  height: calc(100% + 32px);
-  background-image: url('/s/img/scan.png');
-  background-position: 0 0;
-  background-repeat: repeat;
-  z-index: 10000000;
-  animation: scan-animation-right 0.4s linear infinite;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  opacity: 0.75;
+  z-index: 1000;
+  background-image: url('/s/img/overlay2.png');
+  background-repeat: repeat;
+  background-position: 0px 0px;
+  animation-name: Static;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(4);
 }
 
-@keyframes scan-animation-left {
+@keyframes Static {
   0% {
-    transform: translateX(0px) translateY(0px);
+    background-position: 0px 0px;
   }
   100% {
-    transform: translateX(-32px) translateY(-32px);
-  }
-}
-@keyframes scan-animation-right {
-  0% {
-    transform: translateX(0px) translateY(0px);
-  }
-  100% {
-    transform: translateX(32px) translateY(-32px);
+    background-position: 0px 4px;
   }
 }
