@@ -114,7 +114,15 @@
   border-top: 2px solid var(--white);
 }
 .post-title.post-header {
+  /* Sticks the post title to the top of the page upon scrolling down.
+   * Thanks Kasi :) */
+  position: sticky;
+  top: 0;
+
+  /* Offsets the post title from the top of the page so it doesn't overlap with
+   * the header */
   margin-top: 3rem;
+
   border-bottom: 2px solid var(--white);
 }
 .post-title p {
