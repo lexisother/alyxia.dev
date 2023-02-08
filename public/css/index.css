@@ -41,6 +41,11 @@
   margin-right: 2rem;
 }
 
+.topbar > .marquee-text {
+  font-family: Heading;
+  letter-spacing: -4px;
+  font-size: 16px;
+}
 .marquee-text {
   animation: marquee 30s linear infinite;
 }
