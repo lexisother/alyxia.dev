@@ -90,6 +90,7 @@
 
 /* Main page {{{ */
 .introduction {
+  /* Scary and terrible hack that I rather not do but I don't exactly have much of a choice. */
   position: relative;
   transform: translateY(-2.4rem);
   z-index: -1;
@@ -99,7 +100,7 @@
 }
 #wallpaper {
   display: flex;
-  height: 18vh;
+  height: 70vh;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -111,6 +112,8 @@
 }
 #welcome {
   margin-right: -1em;
+  text-shadow: 3px 6px #000, 0px -1px #000, 0px 1px #000, -1px 0px #000, 1px 0px #000,
+    -1px -1px #000, 1px 1px #000, -1px 1px #000, 1px -1px #000;
 }
 .introduction__header {
   word-wrap: normal;

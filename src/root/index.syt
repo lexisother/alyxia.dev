@@ -13,7 +13,7 @@
     [.SYNTAX "{" "}"]
     <h1 id="welcome">Welcome.</h1>
   </div>
-  <!-- <div class="introduction__header">Hello!</div> -->
+  {(separator)}
 </div>
 
 ;; vim: set ft=html:
