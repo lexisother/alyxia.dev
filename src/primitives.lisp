@@ -45,6 +45,9 @@
                                             (3bmd:parse-string-and-print-to-stream (car (car text)) str)))
                             (string streame)))
 
+(sytes:def-syte-primitive *syte* "nth"    #'nth)
+(sytes:def-syte-primitive *syte* "random" #'random)
+(sytes:def-syte-primitive *syte* "length" #'length)
 (sytes:def-syte-primitive *syte* "string" #'string)
 (sytes:def-syte-primitive *syte* "concatenate"
                           (lambda (&rest args)

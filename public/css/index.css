@@ -93,9 +93,22 @@
   font-family: '04b03';
   text-align: center;
   color: var(--white);
-  padding: 0 3em 0 3em;
 }
-
+#wallpaper {
+  display: flex;
+  height: 18vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  line-height: 6rem;
+  background-color: #000;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/s/img/home.png');
+  background-attachment: fixed;
+  background-position: center;
+}
+#welcome {
+  margin-right: -1em;
+}
 .introduction__header {
   word-wrap: normal;
   font-size: 1.8rem;
