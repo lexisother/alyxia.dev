@@ -78,6 +78,13 @@ hr {
   width: 100%;
   height: 32px;
   background-image: url('/s/img/separate.png');
+  background-repeat: repeat;
+}
+.separator {
+  width: 100%;
+  height: 32px;
+  background-image: url('/s/img/separator.png');
+  background-repeat: repeat;
 }
 
 /* }}} */
