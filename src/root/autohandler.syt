@@ -59,11 +59,19 @@
   <body>
     <div class="header">
       <div class="topbar">
-        <p class="marquee-text">my nuts are in severe pain</p>
+        <marquee truespeed="" scrolldelay="30" scrollamount="3">
+          <p>test 1</p>
+          <img src="/s/img/sep.png">
+          <p>test 2</p>
+          <img src="/s/img/sep.png">
+          <p>test 3</p>
+        </marquee>
+        <!-- <p class="marquee-text">my nuts are in severe pain</p> -->
       </div>
-      <div class="topbar staticbar">
-        <p>{\{<BREADCRUMBS HERE>}}</p>
-      </div>
+      <!-- Restore whenever I want to implement breadcrumbs. -->
+      <!-- <div class="topbar staticbar"> -->
+      <!--   <p>{\{<BREADCRUMBS HERE>}}</p> -->
+      <!-- </div> -->
       <div class="knob-row">
         {knob "PROJECTS" "/projects"}
         {knob "BLOG"     "/blog"    }

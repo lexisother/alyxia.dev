@@ -25,11 +25,12 @@
   white-space: nowrap;
 }
 .topbar p {
-  font-family: '04b03';
-  font-size: 1.6rem;
+  position: relative;
   display: inline-block;
-  padding-left: 100%;
   margin: 0;
+  top: -2px;
+  font-family: 'Heading';
+  font-size: 1.6rem;
 }
 
 .staticbar {
@@ -41,21 +42,10 @@
   margin-right: 2rem;
 }
 
-.topbar > .marquee-text {
+.topbar > marquee {
   font-family: Heading;
   letter-spacing: -4px;
   font-size: 16px;
-}
-.marquee-text {
-  animation: marquee 30s linear infinite;
-}
-@keyframes marquee {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-100%, 0);
-  }
 }
 /* }}} */
 
@@ -100,7 +90,7 @@
 }
 #wallpaper {
   display: flex;
-  height: 70vh;
+  height: 65vh;
   width: 100%;
   justify-content: center;
   align-items: center;
