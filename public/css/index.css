@@ -90,6 +90,9 @@
 
 /* Main page {{{ */
 .introduction {
+  position: relative;
+  transform: translateY(-2.4rem);
+  z-index: -1;
   font-family: '04b03';
   text-align: center;
   color: var(--white);
