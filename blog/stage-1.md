@@ -39,7 +39,13 @@ werkelijk gerealiseert kunnen worden.
 
 ## Praktijkopleider
 
-<!-- TODO: ask -->
+Binnen het bedrijf hebben we niet echt een concept van "rollen". Mensen
+doen in principe vanalles tegelijk. Van klantengesprekken en bezoeken tot
+design tot implementatie van de werkelijke websites, iedereen doet alles.
+
+Mijn praktijkopleider noemde zijn "taak" het volgende:
+
+![functie praktijkopleider](/s/img/blog/stage-1/function.png)
 
 ## Waarom dit bedrijf
 
