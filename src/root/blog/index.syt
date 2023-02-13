@@ -16,10 +16,12 @@
     <h1 class="page-header">{(@attr 'TITLE "Blog")}</h1>
     <div class="post-list">
         {foreach post posts-sorted {
-        {[define meta (car post)]}
-        <div class="post-title">
-            <a href="/blog/{meta.id}"><p>{meta.title}</p></a>
-        </div>
+            {[define meta (car post)]}
+            {if (eq meta.hidden nil) {
+                <div class="post-title">
+                    <a href="/blog/{meta.id}"><p>{meta.title}</p></a>
+                </div>
+            }}
         }}
     </div>
 }}
