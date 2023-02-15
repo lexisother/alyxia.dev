@@ -61,6 +61,12 @@ informatie op heb gedaan over hoe de zaken hier verlopen en wat ze precies
 doen, heeft Chris me verwelkomt bij het bedrijf en ben ik met het
 papierwerk begonnen voor de stage te regelen.
 
+De reden waarom dat ik denk dat dit een goede aansluiting op mijn
+opleiding is, is omdat een bedrijf zoals Brik eigenlijk precies is waar ik
+zou willen zitten. Ik moet hier de skills gebruiken die ze op school de
+studenten aanleren, naast de nieuwe dingen die ze hier gebruiken zoals een
+systeem genaamd Craft CMS.
+
 ## Leerdoelen
 
 ### SCRUM
