@@ -120,6 +120,7 @@
 .post-title {
   background: url('/s/img/post-title.jpg');
   background-attachment: fixed !important;
+  background-repeat: round;
   border-top: 2px solid var(--white);
 }
 .post-title.post-header {
