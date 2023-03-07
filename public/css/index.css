@@ -116,6 +116,33 @@
 }
 /* }}} */
 
+/* Projects {{{ */
+.project-box {
+  width: 90vw;
+  margin-left: 3vw;
+  background-color: #000;
+  border: 1px solid #fff;
+  box-shadow: 3px 3px #fff;
+  padding: 1vw 2vw;
+  margin-bottom: 1em;
+}
+.project-box h2 {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.project-box a {
+  width: fit-content;
+}
+.project-box a:visited {
+  color: var(--yellow);
+}
+.project-box a:hover {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+/* }}} */
+
 /* Blog {{{ */
 .post-title {
   background: url('/s/img/post-title.jpg');

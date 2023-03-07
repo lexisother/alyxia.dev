@@ -9,17 +9,19 @@
 ;; a little React element.
 {[defun project (owner name)
   (if (eq owner nil)
-    {<p>{name}</p>}
-    {<p>{owner}/{name}</p>})]}
+    {{name}}
+    {{owner}/{name}})]}
 
-<h1>{(@attr 'TITLE "Projects")}</h1>
+<h1 class="page-header">{(@attr 'TITLE "Projects")}</h1>
 {foreach proj projects-sorted {
-  <h1>
+<div class="project-box">
+  <h2>
     <a href="{proj.url}">
       {project proj.owner proj.name}
     </a>
     {proj.updated}
-  </h1>
+  </h2>
+</div>
 }}
 
 ;; vim: set ft=html:
