@@ -1,15 +1,12 @@
 <!-- prettier-ignore -->
 {[progn
   (define pos '("bottom" "center" "left" "right" "top"))
-  (define rep '("" "round"))
-
   (define wpos (nth (random (length pos)) pos))
-  (define wrep (nth (random (length rep)) rep))
 ]}~
 
 <div class="introduction">
   {.SYNTAX "[" "]"}
-  <div id="wallpaper" style="background-position: [wpos]; background-repeat: [wrep]">
+  <div id="wallpaper" style="background-position: [wpos]">
     [.SYNTAX "{" "}"]
     <h1 id="welcome">Welcome.</h1>
   </div>
