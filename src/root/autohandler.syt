@@ -3,6 +3,9 @@
 <!-- prettier-ignore -->
 {[define defaults '((title . "Alyxia Sother")
                     (description . "Alyxia Sother (@lexisother) is a software developer."))]}
+{[define latest-post (car (car (sort-posts-by-date (fetch-posts (if (not (docker-running))
+                                (string "/home/alyxia/Documents/gitrepos/alyxia.dev-lisp/blog")
+                                (string "/usr/src/app/blog"))))))]}
 
 ;; Now, trust me, it's not like I didn't try to do this in a better way. I
 ;; tried creating a map like the above one for `defaults`.
@@ -60,11 +63,9 @@
     <div class="header">
       <div class="topbar">
         <marquee truespeed="" scrolldelay="30" scrollamount="3">
-          <p>test 1</p>
+          <p>Welcome to Alyxia's domain</p>
           <img src="/s/img/sep.png">
-          <p>test 2</p>
-          <img src="/s/img/sep.png">
-          <p>test 3</p>
+          <p>Latest post: "{latest-post.title}"</p>
         </marquee>
         <!-- <p class="marquee-text">my nuts are in severe pain</p> -->
       </div>

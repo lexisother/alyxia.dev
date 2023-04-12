@@ -4,6 +4,7 @@ Personal website project using [Common Lisp](https://common-lisp.net/) and the [
 
 ## TODO
 
+- Make blog posts a compile-time constant, it is not like they are being read through a volume, they are copied into the container
 - Once ready to replace mainline, read `blog/rewriting-my-website.md`
 - Implement custom templating in blog posts
   - For example, `{{myAge}}` should be replaced by the `*myAge*` global
