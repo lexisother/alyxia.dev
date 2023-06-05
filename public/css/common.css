@@ -30,6 +30,27 @@ hr {
   border: 1px solid var(--white);
 }
 
+blockquote {
+  margin: 0;
+}
+blockquote p {
+  margin: 0;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* :trolley: */
+.quote-indicator {
+  width: 4px;
+  height: 100;
+  margin-right: 0.7rem;
+  border-radius: 4px;
+  background-color: #4d4f56;
+}
+
 :root {
   --aqua: #00b8eb;
   --red: #f00;

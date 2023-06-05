@@ -41,8 +41,15 @@
           <polyline points="24,0 0,24" fill="none" stroke="white" stroke-width="1.5px" />
         </svg>
       </div>
-    </a>})
+     </a>})
 
+  (defun blockquote (text)
+    {<div class="quote-container">
+      <div class="quote-indicator"></div>
+      <blockquote>
+        <p>{text}</p>
+      </blockquote>
+     </div>})
 )}
 
 ;; vim: set ft=html:
