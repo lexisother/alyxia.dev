@@ -9,8 +9,8 @@ date: '2023-02-06T17:00:00'
 
 ## Introductie
 
-Hoi, ik ben Alyxia, en ik ben 17 jaar oud. Ik ben student bij de opleiding
-software development bij Gilde Opleidingen.
+Hoi, ik ben Alyxia, en ik ben (rond de tijd van schrijven) 17 jaar oud. Ik ben
+student bij de opleiding software development bij Gilde Opleidingen.
 
 ## Waarom deze opleiding
 
@@ -64,8 +64,9 @@ papierwerk begonnen voor de stage te regelen.
 De reden waarom dat ik denk dat dit een goede aansluiting op mijn
 opleiding is, is omdat een bedrijf zoals Brik eigenlijk precies is waar ik
 zou willen zitten. Ik moet hier de skills gebruiken die ze op school de
-studenten aanleren, naast de nieuwe dingen die ze hier gebruiken zoals een
-systeem genaamd Craft CMS.
+studenten aanleren (naast dingen die ze studenten ook... _niet_ aanleren!),
+naast de nieuwe dingen die ze hier gebruiken zoals een systeem genaamd Craft
+CMS.
 
 ## Leerdoelen
 
