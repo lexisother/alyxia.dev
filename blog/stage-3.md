@@ -122,7 +122,7 @@ Vragen stellen. Als ik ergens vastloop, gewoon vragen. En ik moet zeggen dat ik
 dit al best goed doe. Het kan gewoon wat vaker dan wat ik nu doe. Maar ik denk
 dat dit wel toeneemt als ik meer projecten mag doen.
 
----
+<hr>
 
 Alles bij alles, tot nu toe heb ik een geweldige stage volbracht, en ik kan
 niet wachten op de tweede helft. Daarnaast is het ook een goed excuus geweest
