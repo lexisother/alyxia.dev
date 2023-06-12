@@ -30,6 +30,16 @@ hr {
   border: 1px solid var(--white);
 }
 
+code {
+  padding: 0.2em;
+  font-size: 15px;
+  text-indent: 0;
+  border: none;
+  white-space: pre-wrap;
+  text-shadow: none;
+  background-color: #282a36;
+}
+
 blockquote::before,
 blockquote::after,
 q::before,
