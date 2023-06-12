@@ -30,6 +30,32 @@ hr {
   border: 1px solid var(--white);
 }
 
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  quotes: none;
+}
+q {
+  font-style: italic;
+}
+q::before {
+  content: '"';
+}
+q::after {
+  content: '"';
+}
+
+blockquote {
+  font-weight: 500;
+  font-style: italic;
+  border-left-width: 0.25rem;
+  border-left-color: #e5e7eb;
+  quotes: '\201C''\201D''\2018''\2019';
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-left: 1em;
+}
 blockquote {
   margin: 0;
 }
