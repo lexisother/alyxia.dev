@@ -4,7 +4,7 @@ title: 'Making my Nix config smarter'
 date: '2023-06-12T15:04:00'
 ---
 
-So, today I was playing around with my Nix config again, and I thought <q>wouldn't it be nice if I wouldn't need an `imports` array on my user config?</q>
+So, today I was playing around with my Nix config again, and I thought <q>wouldn't it be nice if I wouldn't need a manual `imports` array on my user config?</q>
 
 And so I set out to figure out what a good approach was for the situation. I remembered there was a function for listing directories, because back when I was messing around with operator overloading, I used that thing to demonstrate some code:
 
