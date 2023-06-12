@@ -40,6 +40,7 @@
                           (lambda (text)
                             (setf 3bmd-code-blocks:*code-blocks* t)
                             (setf 3bmd-code-blocks:*renderer* :chroma)
+                            (setf 3bmd:*generate-header-ids* t)
                             (setf streame (with-output-to-string (str)
                                             ;; Blegh.
                                             (3bmd:parse-string-and-print-to-stream (car (car text)) str)))
