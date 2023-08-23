@@ -18,6 +18,9 @@
     (local-time:timestamp-whole-year-difference cur dob)))
 ;; }}}
 
+(defun common-replacements (content)
+  (str:replace-all "{{myAge}}" (write-to-string *myAge*) (write-to-string content)))
+
 ;; author: Mishoo
 (defun fetch-projects (path)
   (loop for filename in (list-directory path)
@@ -45,4 +48,5 @@
                        (defparameter *parsed* (parse-md contents))
                        (setf yaml (yaml:parse (first *parsed*)))
                        (setf post (last *parsed*))
+                       (setf post (common-replacements post))
                        (list yaml post)))))

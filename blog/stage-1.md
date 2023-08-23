@@ -4,9 +4,6 @@ title: 'Stage: Start'
 date: '2023-02-06T17:00:00'
 ---
 
-<!-- TODO: Implement common regex replacements of markdown contents. e.g.
-{{myAge}} -->
-
 ## Introductie
 
 Hoi, ik ben Alyxia, en ik ben (rond de tijd van schrijven) 17 jaar oud. Ik ben

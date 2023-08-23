@@ -8,6 +8,7 @@
                 :entry-point "alyxia.dev::main"
                 :serial t
                 :depends-on (#:sytes
+                             #:str
                              #:local-time
                              #:cl-json
                              #:cl-yaml

@@ -43,7 +43,7 @@
                             (setf 3bmd:*generate-header-ids* t)
                             (setf streame (with-output-to-string (str)
                                             ;; Blegh.
-                                            (3bmd:parse-string-and-print-to-stream (car (car text)) str)))
+                                            (3bmd:parse-string-and-print-to-stream (car text) str)))
                             (string streame)))
 
 (sytes:def-syte-primitive *syte* "nth"    #'nth)
