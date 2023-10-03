@@ -1,5 +1,8 @@
 (in-package #:alyxia.dev)
 
+(sytes:def-url-handler (*syte* "^/.well-known/webfinger")
+                       `(:redirect "https://is.nota.live/.well-known/webfinger?resource=acct:alyxia@is.nota.live"))
+
 (sytes:def-url-handler (*syte* "^/blog/(.*)$" id)
                        (defparameter *projs* (fetch-posts "/usr/src/app/blog"))
                        (let ((entry (find-if
