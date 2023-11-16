@@ -1,7 +1,7 @@
 ---
 id: 'stage2-2'
 title: 'Stage 2: Werkzaamheden'
-date: '2023-09-14T17:00:00'
+date: '2023-11-16T17:00:00'
 ---
 
 <!--
