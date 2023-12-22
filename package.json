@@ -14,9 +14,10 @@
   "dependencies": {
     "@rescript/core": "^0.6.0",
     "@rescript/react": "^0.11.0",
+    "gray-matter": "^4.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rescript": "10.1"
+    "rescript": "^11.0.0-rc.6"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.0.0",

@@ -1,0 +1,34 @@
+{
+  "name": "rescript-lang.org",
+  "namespace": false,
+  "jsx": {
+    "version": 4
+  },
+  "bs-dependencies": [
+    "@rescript/react"
+  ],
+  "uncurried": true,
+  "ppx-flags": [],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "warnings": {
+    "error": "+8"
+  },
+  "suffix": ".bs.mjs",
+  "bsc-flags": [
+    "-bs-g"
+  ],
+  "gentypeconfig": {
+    "language": "untyped",
+    "shims": [],
+    "module": "es6"
+  }
+}
