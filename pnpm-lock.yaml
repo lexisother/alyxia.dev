@@ -54,7 +54,7 @@ dependencies:
     specifier: ^7.0.3
     version: 7.0.4
   rescript:
-    specifier: ^11.0.0-rc.6
+    specifier: ^11.0.0-rc.8
     version: 11.0.0-rc.8
 
 devDependencies:

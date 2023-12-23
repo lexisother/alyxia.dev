@@ -1,11 +1,12 @@
 {
-  "name": "rescript-lang.org",
+  "name": "alyxia.dev",
   "namespace": false,
   "jsx": {
     "version": 4
   },
   "bs-dependencies": [
-    "@rescript/react"
+    "@rescript/react",
+    "@rescript/core"
   ],
   "uncurried": true,
   "ppx-flags": [],
@@ -24,7 +25,8 @@
   },
   "suffix": ".mjs",
   "bsc-flags": [
-    "-bs-g"
+    "-bs-g",
+    "-open RescriptCore"
   ],
   "gentypeconfig": {
     "language": "untyped",

@@ -1,8 +1,10 @@
 ---
 id: 'nix-autoimport'
 title: 'Making my Nix config smarter'
-date: '2023-06-12T15:04:00'
+date: '2023-06-12'
 ---
+
+## test
 
 So, today I was playing around with my Nix config again, and I thought <q>wouldn't it be nice if I wouldn't need a manual `imports` array on my user config?</q>
 
@@ -96,15 +98,14 @@ It's not anything remarkable in any way, but this _did_ take me about an hour to
         (x: !lib.strings.hasInfix "default" x)
         importMap;
 
-in
-{
-home-manager = {
-users.alyxia = { ... }: { # Defined further above, a list of files to import.
-imports = importsFiltered;
-};
-};
-}
-
+  in
+  {
+    home-manager = {
+      users.alyxia = { ... }: { # Defined further above, a list of files to import.
+        imports = importsFiltered;
+      };
+    };
+  }
 ```
 </details>
 ```
