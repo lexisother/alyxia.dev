@@ -5,7 +5,6 @@
 @import './reset';
 @import './fonts';
 // @import './components';
-@import './header';
 
 @mixin desktop {
   @media(min-width: 768px) {
