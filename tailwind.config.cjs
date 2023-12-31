@@ -194,26 +194,27 @@ module.exports = {
       'auto': 'auto',
     },
     /* We override the default font-families with our own default prefs  */
-    fontFamily: {
-      sans: [
-        "Inter",
-        "SF Pro Text",
-        "Roboto",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "Helvetica Neue",
-        "Arial",
-        "sans-serif"
-      ],
-      mono: [
-        "Roboto Mono",
-        "SFMono-Regular",
-        "Menlo",
-        "Segoe UI",
-        "Courier",
-        "monospace"
-      ]
-    }
+    // fontFamily: {
+    //   sans: [
+    //     ""
+    //     "Inter",
+    //     "SF Pro Text",
+    //     "Roboto",
+    //     "-apple-system",
+    //     "BlinkMacSystemFont",
+    //     "Helvetica Neue",
+    //     "Arial",
+    //     "sans-serif"
+    //   ],
+    //   mono: [
+    //     "Roboto Mono",
+    //     "SFMono-Regular",
+    //     "Menlo",
+    //     "Segoe UI",
+    //     "Courier",
+    //     "monospace"
+    //   ]
+    // }
   },
   plugins: []
 };

@@ -2,10 +2,10 @@ module Params = {
   type t = {slug: string}
 }
 
-type props = {mdxSource: MdxRemote.output, path: string}
+type props = {mdxSource: MdxRemote.output, path: string, slug: string}
 
 let default = (props: props) => {
-  let {mdxSource, path} = props
+  let {mdxSource, path, slug} = props
 
   let children =
     <MdxRemote
@@ -19,25 +19,13 @@ let default = (props: props) => {
 
   let content = switch fm {
   | Ok({id, title, description, date}) =>
-    <div className="w-full">
-      {React.string(title)}
-      <div className="flex justify-center">
-        <div className="max-w-740 w-full">
-          children
-          <div className="mt-12">
-            <div className="pt-20 flex flex-col items-center">
-              <div className="text-24 sm:text-32 text-center text-gray-80 font-medium">
-                {React.string("Want to read more?")}
-              </div>
-              <Next.Link href="/blog" className="text-fire hover:text-fire-70">
-                {React.string("Back to Overview")}
-                <Icon.ArrowRight className="ml-2 inline-block" />
-              </Next.Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <article>
+      <h1> {React.string(title)} </h1>
+      <p>
+        <a href=slug> {React.string(date)} </a>
+      </p>
+      <div className="e-content"> children </div>
+    </article>
   | Error(msg) => <div> {React.string(msg)} </div>
   }
 
@@ -64,7 +52,8 @@ let getStaticProps: Next.GetStaticProps.t<props, Params.t> = async ctx => {
     {parseFrontmatter: true, mdxOptions: MdxRemote.defaultMdxOptions},
   )
 
-  let props = {mdxSource, path}
+  let slug = params.slug
+  let props = {mdxSource, path, slug}
 
   {"props": props}
 }

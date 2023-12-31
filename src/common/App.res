@@ -16,10 +16,12 @@ let make = (props: props): React.element => {
 
   let url = router.route->Url.parse
 
-  switch Belt.List.fromArray(url) {
-  | list{"blog"} => content
-  | list{"packages"} => content
-  | list{"blog", ..._rest} => content
-  | _ => <div> content </div>
-  }
+  <MainLayout>
+    {switch Belt.List.fromArray(url) {
+    | list{"blog"} => content
+    | list{"packages"} => content
+    | list{"blog", ..._rest} => content
+    | _ => content
+    }}
+  </MainLayout>
 }

@@ -4,7 +4,7 @@
 module P = {
   @react.component
   let make = (~children) =>
-    <p className="md-p md:leading-5 tracking-[-0.015em] text-gray-80 md:text-16"> children </p>
+    <p className="md-p md:leading-5 tracking-[-0.015em] md:text-16"> children </p>
 }
 
 // Used for hero like introduction text in
@@ -32,7 +32,7 @@ module Cite = {
 module Info = {
   @react.component
   let make = (~children) =>
-    <div className="infobox my-5 py-6 pl-8 pr-10 rounded-lg bg-sky-5"> children </div>
+    <div className="infobox my-5 py-6 pl-8 pr-10 rounded-lg bg-[#273746]"> children </div>
 }
 
 module Warn = {
@@ -117,7 +117,7 @@ module Anchor = {
     let style = ReactDOM.Style.make(~position="absolute", ~top="-7rem", ())
     <span className="inline group relative">
       <a
-        className="invisible text-gray-60 opacity-50 text-inherit hover:opacity-100 hover:text-gray-60 hover:cursor-pointer group-hover:visible"
+        className="invisible opacity-70 text-inherit hover:opacity-100 hover:text-gray-60 hover:cursor-pointer group-hover:visible"
         href={"#" ++ id}>
         <Icon.Hyperlink className="inline-block align-middle text-gray-40" />
       </a>
@@ -139,9 +139,9 @@ module H2 = {
     // Here we know that children is always a string (## headline)
     <h2 className="group mt-16 mb-3 hl-3">
       children
-      <span className="ml-2">
-        <Anchor id />
-      </span>
+      // <span className="ml-2">
+      //   <Anchor id />
+      // </span>
     </h2>
   </>
 }
@@ -151,9 +151,9 @@ module H3 = {
   let make = (~id, ~children) =>
     <h3 className="group mt-8 mb-4 hl-4">
       children
-      <span className="ml-2">
-        <Anchor id />
-      </span>
+      // <span className="ml-2">
+      //   <Anchor id />
+      // </span>
     </h3>
 }
 
@@ -162,9 +162,9 @@ module H4 = {
   let make = (~id, ~children) =>
     <h4 className="group mt-8 hl-5">
       children
-      <span className="ml-2">
-        <Anchor id />
-      </span>
+      // <span className="ml-2">
+      //   <Anchor id />
+      // </span>
     </h4>
 }
 
@@ -174,22 +174,26 @@ module H5 = {
     <h5
       className="group mt-12 mb-3 text-12 leading-2 font-sans font-semibold uppercase tracking-wide text-gray-80">
       children
-      <span className="ml-2">
-        <Anchor id />
-      </span>
+      // <span className="ml-2">
+      //   <Anchor id />
+      // </span>
     </h5>
 }
 
 module Pre = {
   @react.component
-  let make = (~children) => <pre className="mt-2 mb-4 xs:mx-0 block"> children </pre>
+  let make = (~children) =>
+    <pre
+      className="mt-2 mb-4 xs:mx-0 block bg-[#273746] border-gray-90 border-opacity-5 rounded-lg">
+      children
+    </pre>
 }
 
 module InlineCode = {
   @react.component
   let make = (~children) =>
     <code
-      className="md-inline-code px-2 py-0.5  text-gray-60 font-mono rounded-sm bg-gray-10-tr border border-gray-90 border-opacity-5">
+      className="md-inline-code px-2 py-0.5 text-gray-60 font-mono rounded-sm bg-gray-10-tr border border-gray-90 border-opacity-5">
       children
     </code>
 }

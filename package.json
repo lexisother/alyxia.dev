@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "next start",
     "build": "rescript clean -with-deps && rescript && next build",
     "res:clean": "rescript clean",
     "res:dev": "rescript build -w",
@@ -32,7 +33,8 @@
     "remark-parse": "^10.0.2",
     "remark-slug": "^5.1.2",
     "remark-stringify": "^7.0.3",
-    "rescript": "^11.0.0-rc.8"
+    "rescript": "^11.0.0-rc.8",
+    "sass": "^1.69.6"
   },
   "devDependencies": {
     "@mdx-js/react": "^2.3.0",
