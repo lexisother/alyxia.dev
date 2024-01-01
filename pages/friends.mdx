@@ -1,32 +1,15 @@
+import {friends} from 'data/data.json'
+
 # friends 💚
 
 i love my friends. i believe my friends are incredibly cool people. i think you should take a look at them.
 
 <div className="badge-grid">
-    <a href="https://arciniega.one" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/chloe.png" width="88" height="31" />
-    </a>
-    <a href="https://lylythii.com" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/lily.png" width="88" height="31" />
-    </a>
-    <a href="https://youtu.be/K6TtKNB1fWg" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/lynne.png" width="88" height="31" />
-    </a>
-    <a href="https://nax.dev" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/nax.png" width="88" height="31" />
-    </a>
-    <a href="https://github.com/unclamped/" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/maru.png" width="88" height="31" />
-    </a>
-    <a href="https://estrogen.monster/" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/mopi.jpg" width="88" height="31" />
-    </a>
-    <a href="https://oomfie.town/" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/amy.gif" width="88" height="31" />
-    </a>
-    <a href="https://moltencoredev.github.io/" target="_blank" rel="noopener nofollow">
-        <img src="/static/img/88x31/molten.png" width="88" height="31" />
-    </a>
+    {friends.map(friend => (
+        <a href={friend.link} target="_blank" rel="noopener nofollow">
+            <img src={`/static/img/88x31/${friend.image}`} width="88" height="31" />
+        </a>
+    ))}
 </div>
 
 do you think you're cool enough to be on this list? or are we already friends and is this list clearly missing your amazing presence? [let me know](/contact)!
