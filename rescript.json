@@ -6,7 +6,9 @@
   },
   "bs-dependencies": [
     "@rescript/react",
-    "@rescript/core"
+    "@rescript/core",
+    "@glennsl/rescript-fetch",
+    "@glennsl/rescript-json-combinators"
   ],
   "uncurried": true,
   "ppx-flags": [],

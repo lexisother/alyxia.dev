@@ -17,10 +17,12 @@
     }
   },
   "dependencies": {
+    "@glennsl/rescript-fetch": "^0.2.0",
+    "@glennsl/rescript-json-combinators": "^1.3.0",
     "@mdx-js/loader": "^2.3.0",
     "@rescript/core": "^0.6.0",
     "@rescript/react": "^0.12.0-alpha.3",
-    "@solely/simple-fm": "^1.6.2",
+    "@solely/simple-fm": "^1.6.3",
     "gray-matter": "^4.0.3",
     "next": "^13.1.1",
     "next-mdx-remote": "^4.4.1",
@@ -49,7 +51,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@solely/simple-fm@1.6.2": "patches/@solely__simple-fm@1.6.2.patch"
+      "@solely/simple-fm@1.6.3": "patches/@solely__simple-fm@1.6.2.patch"
     }
   }
 }

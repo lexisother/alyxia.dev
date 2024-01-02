@@ -5,11 +5,17 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  '@solely/simple-fm@1.6.2':
+  '@solely/simple-fm@1.6.3':
     hash: wjkt5emyvaf2ud5nz4otve5cum
     path: patches/@solely__simple-fm@1.6.2.patch
 
 dependencies:
+  '@glennsl/rescript-fetch':
+    specifier: ^0.2.0
+    version: 0.2.0
+  '@glennsl/rescript-json-combinators':
+    specifier: ^1.3.0
+    version: 1.3.0
   '@mdx-js/loader':
     specifier: ^2.3.0
     version: 2.3.0(webpack@5.89.0)
@@ -20,8 +26,8 @@ dependencies:
     specifier: ^0.12.0-alpha.3
     version: 0.12.0-alpha.3(react-dom@18.2.0)(react@18.2.0)
   '@solely/simple-fm':
-    specifier: ^1.6.2
-    version: 1.6.2(patch_hash=wjkt5emyvaf2ud5nz4otve5cum)
+    specifier: ^1.6.3
+    version: 1.6.3(patch_hash=wjkt5emyvaf2ud5nz4otve5cum)
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -699,6 +705,14 @@ packages:
     dev: true
     optional: true
 
+  /@glennsl/rescript-fetch@0.2.0:
+    resolution: {integrity: sha512-0tsEqJ/6/WBm02prM4RYG+qpnNTaB8QKKIeQHXdDaE4C5YfA/nzjxMNW3CjsGIaEgyrAmmIXFS0kx24UjvOI6A==}
+    dev: false
+
+  /@glennsl/rescript-json-combinators@1.3.0:
+    resolution: {integrity: sha512-5HACiKHBDi5Y0XHStCfW1+G0IZja4stsZ8uZDxVL1kbTfEhvL/FExHG5iUG4AWPW++DG38nx8eXZ2wXhAgUvYQ==}
+    dev: false
+
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
@@ -918,8 +932,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@solely/simple-fm@1.6.2(patch_hash=wjkt5emyvaf2ud5nz4otve5cum):
-    resolution: {integrity: sha512-6LE56qGVfpjvOPJKwCgdxMci4KBiyyiRVOOmsq65kNf6rWTVYl2ZkDDpD9X0BwHp4GTale4TuMLRwcajGVme/Q==}
+  /@solely/simple-fm@1.6.3(patch_hash=wjkt5emyvaf2ud5nz4otve5cum):
+    resolution: {integrity: sha512-aZx2t+viz+lm+W49Gf9tkbaS794hlVgUW6Ax/mvL8d0hW4MRDFM4vWDhX5Yqp531q4dDjDqauDgB3lY+pcmwsQ==}
     engines: {node: '>=20'}
     dependencies:
       ofetch: 1.3.3
