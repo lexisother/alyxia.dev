@@ -24,3 +24,52 @@ module Url = {
     }
   `)
 }
+
+module Date = {
+  let timeAgo = (date: Date.t): string => {
+    open Float
+    open Date
+
+    let dateInMs = date->Date.getTime
+    let dayInMs = 86400000. // 24 * 60 * 60 * 1000
+    let today = Date.make()
+    let yesterday = Date.fromTime(today->getTime -. dayInMs)
+    let seconds = Math.round((today->getTime -. dateInMs) /. 1000.)->toInt
+    let minutes = Math.round(Int.toFloat(seconds / 60))->toInt
+    let isToday = today->toDateString == date->toDateString
+    let isYesterday = yesterday->toDateString == date->toDateString
+    let isThisYear = today->getFullYear == date->getFullYear
+
+    if seconds < 5 {
+      "now"
+    } else if seconds < 60 {
+      `${seconds->Int.toString} seconds ago`
+    } else if seconds < 90 {
+      "about a minute ago"
+    } else if minutes < 60 {
+      `${minutes->Int.toString} minutes ago`
+    } else if isToday {
+      let t =
+        date->toLocaleStringWithLocaleAndOptions("en-US", {hour: #"2-digit", minute: #"2-digit"})
+      `today at ${t}`
+    } else if isYesterday {
+      let t =
+        date->toLocaleStringWithLocaleAndOptions("en-US", {hour: #"2-digit", minute: #"2-digit"})
+      `yesterday at ${t}`
+    } else if isThisYear {
+      let d = date->toLocaleStringWithLocaleAndOptions("en-US", {day: #numeric, month: #long})
+      let t =
+        date->toLocaleStringWithLocaleAndOptions("en-US", {hour: #"2-digit", minute: #"2-digit"})
+      `${d} at ${t}`
+    } else {
+      let d =
+        date->toLocaleStringWithLocaleAndOptions(
+          "en-US",
+          {day: #numeric, month: #long, year: #numeric},
+        )
+      let t =
+        date->toLocaleStringWithLocaleAndOptions("en-US", {hour: #"2-digit", minute: #"2-digit"})
+      `${d} at ${t}`
+    }
+  }
+}

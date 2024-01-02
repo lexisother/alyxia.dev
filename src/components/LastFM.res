@@ -37,6 +37,7 @@ let default = () => {
       let data: SimpleFM.Types.recentTracksRes = data // typecasting because apparently that's possible
       let playing = data["search"]["nowPlaying"]
       let latest = data["tracks"][0]->getUnsafe
+
       <div>
         <h1> {React.string(playing ? "now playing!" : "last played")} </h1>
         <br />
@@ -44,6 +45,8 @@ let default = () => {
           <a href={latest["url"]}>
             {React.string(`${latest["artist"]["name"]} - ${latest["name"]}`)}
           </a>
+          <br />
+          <span> {React.string(Util.Date.timeAgo(latest["dateAdded"]))} </span>
         </blockquote>
       </div>
     }

@@ -1,5 +1,5 @@
 module Types = {
-  type track = {"artist": {"name": string}, "url": string, "name": string}
+  type track = {"artist": {"name": string}, "url": string, "name": string, "dateAdded": Date.t}
   type recentTracksRes = {"search": {"nowPlaying": bool}, "tracks": array<track>}
 
   type user = {getRecentTracks: {"username": string} => promise<recentTracksRes>}
