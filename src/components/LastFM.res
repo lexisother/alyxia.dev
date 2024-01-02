@@ -30,7 +30,7 @@ let default = () => {
   }, [])
 
   switch state {
-  | Loading => <div> {React.string("Loading...")} </div>
+  | Loading => <div> {React.string("Loading Last.FM data...")} </div>
   | Done => {
       open Option
 
@@ -46,7 +46,9 @@ let default = () => {
             {React.string(`${latest["artist"]["name"]} - ${latest["name"]}`)}
           </a>
           <br />
-          <span> {React.string(Util.Date.timeAgo(latest["dateAdded"]))} </span>
+          {!playing
+            ? <span> {React.string(Util.Date.timeAgo(latest["dateAdded"]))} </span>
+            : <> </>}
         </blockquote>
       </div>
     }
