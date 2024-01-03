@@ -7,7 +7,7 @@ i love my friends. i believe my friends are incredibly cool people. i think you 
 <div className="badge-grid">
     {friends.map(friend => (
         <a href={friend.link} target="_blank" rel="noopener nofollow">
-            <img src={`/static/img/88x31/${friend.image}`} width="88" height="31" />
+            <img alt={friend.name} src={`/static/img/88x31/${friend.image}`} width="88" height="31" />
         </a>
     ))}
 </div>
