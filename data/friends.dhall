@@ -38,7 +38,7 @@ let friends =
         , link = "https://moltencoredev.github.io"
         }
       , Friend::{
-        , name = "Birb"
+        , name = "birb"
         , image = "birb.png"
         , link = "https://miaowi.ng"
         }
