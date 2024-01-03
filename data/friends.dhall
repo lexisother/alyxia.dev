@@ -42,6 +42,11 @@ let friends =
         , image = "birb.png"
         , link = "https://miaowi.ng"
         }
+      , Friend::{
+        , name = "Baph"
+        , image = "baph.gif"
+        , link = "https://hentainetwork.xyz"
+        }
       ]
 
 in  friends
