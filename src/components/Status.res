@@ -15,10 +15,11 @@ let default = () => {
       setData(_ => Some(data))
     }
 
+    open Promise
     getData()
-    ->Promise.then(() => {
+    ->then(() => {
       setState(_ => Done)
-      Promise.resolve()
+      resolve()
     })
     ->ignore
 
