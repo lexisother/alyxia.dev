@@ -12,6 +12,7 @@ let default = () => {
     let getData = async () => {
       let res = await Fetch.get("https://status.cafe/users/alyxia/status.json")
       let data = await res->Fetch.Response.json
+      Console.log(data)
       setData(_ => Some(data))
     }
 
@@ -34,7 +35,6 @@ let default = () => {
       open JsonCombinators.Json.Decode
 
       let data = data->getUnsafe->Js.Json.stringify
-      Console.log(data)
       let decode = object(field => {
         content: field.required("content", string),
         face: field.required("face", string),
@@ -51,7 +51,7 @@ let default = () => {
             <span> {React.string(data.face->getUnsafe)} </span>
             <span className="subtle"> {React.string(data.timeAgo->getUnsafe)} </span>
           </div>
-          <div> {React.string(data.content->getUnsafe)} </div>
+          <div dangerouslySetInnerHTML={"__html": data.content->getUnsafe} />
         </blockquote>
       </div>
     }
