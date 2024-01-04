@@ -47,6 +47,16 @@ let friends =
         , image = "baph.gif"
         , link = "https://hentainetwork.xyz"
         }
+      , Friend::{
+        , name = "Maggie"
+        , image = "maggie.gif"
+        , link = "https://iusearchbtw.fun"
+        }
+      , Friend::{
+        , name = "Marvin"
+        , image = "marvin.png"
+        , link = "https://nurmarv.in"
+        }
       ]
 
 in  friends
