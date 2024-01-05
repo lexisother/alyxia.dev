@@ -57,6 +57,11 @@ let friends =
         , image = "marvin.png"
         , link = "https://nurmarv.in"
         }
+      , Friend::{
+        , name = "Noia"
+        , image = "noia.png"
+        , link = "https://noia.site"
+        }
       ]
 
 in  friends
