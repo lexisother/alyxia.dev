@@ -1,3 +1,6 @@
+type nav = {name: string, link: string, emoji: string}
+@module("data/data.json") external nav: array<nav> = "nav"
+
 @react.component
 let make = (~components=MarkdownComponents.default, ~children) => {
   <>
@@ -15,18 +18,14 @@ let make = (~components=MarkdownComponents.default, ~children) => {
             {React.string("pages")}
           </p>
           <ul>
-            <li>
-              <i className="emoji" ariaHidden=true> {React.string("📗")} </i>
-              <a href="/blog/"> {React.string("blog")} </a>
-            </li>
-            <li>
-              <i className="emoji" ariaHidden=true> {React.string("💚")} </i>
-              <a href="/friends/"> {React.string("friends")} </a>
-            </li>
-            <li>
-              <i className="emoji" ariaHidden=true> {React.string("✉️")} </i>
-              <a href="/contact/"> {React.string("contact")} </a>
-            </li>
+            {nav
+            ->Array.map(v => {
+              <li>
+                <i className="emoji" ariaHidden=true> {React.string(v.emoji)} </i>
+                <a href=v.link> {React.string(v.name)} </a>
+              </li>
+            })
+            ->React.array}
           </ul>
         </nav>
       </header>
