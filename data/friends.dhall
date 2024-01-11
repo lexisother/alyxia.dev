@@ -62,6 +62,11 @@ let friends =
         , image = "noia.png"
         , link = "https://noia.site"
         }
+      , Friend::{
+        , name = "Ashley"
+        , image = "ashley.png"
+        , link = "https://foxuccino.pages.gay/"
+        }
       ]
 
 in  friends
