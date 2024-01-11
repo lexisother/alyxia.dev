@@ -23,6 +23,10 @@ let make = (~components=MarkdownComponents.default, ~children) => {
               <i className="emoji" ariaHidden=true> {React.string("💚")} </i>
               <a href="/friends/"> {React.string("friends")} </a>
             </li>
+            <li>
+              <i className="emoji" ariaHidden=true> {React.string("✉️")} </i>
+              <a href="/contact/"> {React.string("contact")} </a>
+            </li>
           </ul>
         </nav>
       </header>
