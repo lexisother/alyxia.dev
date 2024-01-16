@@ -17,6 +17,7 @@ let friends =
         , link = "https://youtu.be/K6TtKNB1fWg"
         }
       , Friend::{ name = "Nax", image = "nax.png", link = "https://nax.dev" }
+      , Friend::{ name = "Maisy", image = "maisy.png", link = "https://maisy.moe" }
       , Friend::{
         , name = "Maru"
         , image = "maru.png"
