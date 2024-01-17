@@ -1,7 +1,7 @@
 #let primary_colour = rgb("#3E0C87") // vivid purple
 
 #let coloredLine() = {
-     line(length: 100%, stroke: 1pt + primary_colour)
+  line(length: 100%, stroke: 1pt + primary_colour)
 }
 
 #let icon(name, shift: 1.5pt) = {
@@ -20,7 +20,7 @@
   services.map(service => {
     icon(service.name)
 
-    if "display" in service.keys() {
+    if "display" in service.keys() and service.display.len() > 0 {
       link(service.link)[#{service.display}]
     } else {
       link(service.link)
@@ -48,8 +48,8 @@
   show heading.where(
     level: 2
   ): it => text(
-      fill: primary_colour,
-      font: "Iosevka NF",
+    fill: primary_colour,
+    font: "Iosevka NF",
     [
       #{it.body}
       #v(-7pt)
@@ -91,21 +91,20 @@
   )
 }
 
+#let resume = json("../data.json").resume
+
 #show: doc => alta(
-  name: "Alyxia Sother",
-  links: (
-    (name: "email", link: "mailto:alyxia@riseup.net"),
-    (name: "website", link: "https://alyxia.dev/", display: "alyxia.dev"),
-    (name: "github", link: "https://github.com/lexisother", display: "@lexisother"),
-    // todo: guard with `if` block
-    // (name: "linkedin", link: "", display: "alyxia sother"),
-    (name: "mastodon", link: "https://is.nota.live/@alyxia", display: "@alyxia@is.nota.live"),
-  ),
-  tagline: "Yes.",
+  name: resume.name,
+  links: resume.links.map(l => (
+    name: l.title,
+    display: l.description,
+    link: l.url
+  )),
+  tagline: resume.tagline,
   doc,
 )
 
-#textAside[Hello, I'm Alyxia Sother. I'm an experienced software engineer based in The Netherlands, and a not-so-very prolific blogger. I do however enjoy writing when I get the chance.]
+#textAside[Hello, I'm #{resume.name}. I'm an experienced software engineer based in The Netherlands, and a not-so-very prolific blogger. I do however enjoy writing when I get the chance.]
 
 // todo: detail
 
