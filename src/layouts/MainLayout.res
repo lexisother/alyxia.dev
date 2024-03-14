@@ -4,9 +4,14 @@ type hnav = {name: string, emoji: string, links: array<nav>}
 
 @react.component
 let make = (~components=MarkdownComponents.default, ~children) => {
+  let (opened, setOpened) = React.useState(_ => false)
+
   <>
     <div className="container">
-      <header>
+      <header className={opened ? "open" : ""}>
+        <button onClick={e => {setOpened(_ => false)}}>
+          <img src="/static/img/xmark-solid.svg" />
+        </button>
         <div className="h-card">
           <img className="u-photo" src="/static/img/aly.png" width="48" height="48" />
           <a className="p-name p-author u-url" href="https://alyxia.dev">
@@ -38,6 +43,11 @@ let make = (~components=MarkdownComponents.default, ~children) => {
         </nav>
       </header>
       <main>
+        <nav>
+          <button onClick={e => {setOpened(_ => true)}}>
+            <img src="/static/img/bars-solid.svg" />
+          </button>
+        </nav>
         <MdxProvider components> children </MdxProvider>
       </main>
       <footer>
