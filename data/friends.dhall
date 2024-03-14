@@ -2,6 +2,11 @@ let Friend = ./types/Friend.dhall
 
 let friends =
       [ Friend::{
+        , name = "Marsh"
+        , image = "marsh.png"
+        , link = "https://marsh.zone"
+        }
+      , Friend::{
         , name = "Chloe"
         , image = "chloe.png"
         , link = "https://arciniega.one"
