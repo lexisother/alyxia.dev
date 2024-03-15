@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "next start",
-    "build": "rescript clean -with-deps && rescript && next build",
+    "build": "rescript clean -with-deps && rescript && pnpm gen-feed && next build",
     "res:clean": "rescript clean",
     "res:dev": "rescript build -w",
     "dev": "next",
