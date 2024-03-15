@@ -16,6 +16,11 @@
     {
       "dir": "src",
       "subdirs": true
+    },
+    {
+      "dir": "scripts",
+      "subdirs": true,
+      "type": "dev"
     }
   ],
   "package-specs": {
