@@ -15,3 +15,4 @@ data/data.json
 
 src/**/*.mjs
 scripts/**/*.mjs
+public/blog/feed.xml

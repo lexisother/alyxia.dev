@@ -8,7 +8,8 @@
     "build": "rescript clean -with-deps && rescript && next build",
     "res:clean": "rescript clean",
     "res:dev": "rescript build -w",
-    "dev": "next"
+    "dev": "next",
+    "gen-feed": "node scripts/generate_feed.mjs > public/blog/feed.xml"
   },
   "postcss": {
     "plugins": {
