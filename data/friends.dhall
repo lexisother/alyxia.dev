@@ -22,11 +22,30 @@ let friends =
         , link = "https://youtu.be/K6TtKNB1fWg"
         }
       , Friend::{ name = "Nax", image = "nax.png", link = "https://nax.dev" }
-      , Friend::{ name = "Maisy", image = "maisy.png", link = "https://maisy.moe" }
+      , Friend::{
+        , name = "Maisy"
+        , image = "maisy.png"
+        , link = "https://maisy.moe"
+        }
+      , Friend::{
+        , name = "birb"
+        , image = "birb.png"
+        , link = "https://miaowi.ng"
+        }
+      , Friend::{
+        , name = "Maggie"
+        , image = "maggie.gif"
+        , link = "https://iusearchbtw.fun"
+        }
       , Friend::{
         , name = "Maru"
         , image = "maru.png"
         , link = "https://github.com/unclamped"
+        }
+      , Friend::{
+        , name = "Dank"
+        , image = "dank.png"
+        , link = "https://catvibers.me"
         }
       , Friend::{
         , name = "Mopi"
@@ -44,19 +63,9 @@ let friends =
         , link = "https://moltencoredev.github.io"
         }
       , Friend::{
-        , name = "birb"
-        , image = "birb.png"
-        , link = "https://miaowi.ng"
-        }
-      , Friend::{
         , name = "Baph"
         , image = "baph.gif"
         , link = "https://hentainetwork.xyz"
-        }
-      , Friend::{
-        , name = "Maggie"
-        , image = "maggie.gif"
-        , link = "https://iusearchbtw.fun"
         }
       , Friend::{
         , name = "Marvin"
