@@ -7,9 +7,9 @@ let friends =
         , link = "https://marsh.zone"
         }
       , Friend::{
-        , name = "Chloe"
-        , image = "chloe.png"
-        , link = "https://arciniega.one"
+        , name = "Sapphic Angels"
+        , image = "sapphic.png"
+        , link = "https://sapphic.moe"
         }
       , Friend::{
         , name = "Lily"
