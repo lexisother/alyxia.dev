@@ -17,6 +17,11 @@ let friends =
         , link = "https://lylythii.com"
         }
       , Friend::{
+        , name = "Shiro"
+        , image = "kneesox.png"
+        , link = "https://kneesox.moe"
+        }
+      , Friend::{
         , name = "Lynne"
         , image = "lynne.png"
         , link = "https://youtu.be/K6TtKNB1fWg"
