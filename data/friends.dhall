@@ -87,6 +87,11 @@ let friends =
         , image = "ashley.png"
         , link = "https://foxuccino.pages.gay/"
         }
+      , Friend::{
+        , name = "Jusuf"
+        , image = "jusuf.png"
+        , link = "https://fx2.vercel.app"
+        }
       ]
 
 in  friends
