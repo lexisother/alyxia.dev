@@ -12,6 +12,15 @@ let nav =
           , Nav::{ name = "contact", link = "/contact/", emoji = "✉️" }
           ]
         }
+      , HNav::{
+        , name = "webring"
+        , emoji = "🌐"
+        , links =
+          [ Nav::{ name = "previous", link = "https://webring.birb.cc/prev", emoji = "⏮️" }
+          , Nav::{ name = "home", link = "https://webring.birb.cc", emoji = "🏠" }
+          , Nav::{ name = "next", link = "https://webring.birb.cc/next", emoji = "⏭️" }
+          ]
+        }
       ]
 
 in  nav
