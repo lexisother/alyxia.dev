@@ -45,7 +45,7 @@ let friends =
       , Friend::{
         , name = "Maru"
         , image = "maru.png"
-        , link = "https://github.com/unclamped"
+        , link = "https://maru.olcese.com.ar"
         }
       , Friend::{
         , name = "Dank"
