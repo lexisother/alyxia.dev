@@ -1,0 +1,111 @@
+---
+title: "Making my Nix config smarter"
+draft: false
+created: 2023-06-12
+modified: 2023-06-12
+---
+
+So, today I was playing around with my Nix config again, and I thought "wouldn't it be nice if I wouldn't need a manual `imports` array on my user config?"
+
+And so I set out to figure out what a good approach was for the situation. I remembered there was a function for listing directories, because back when I was messing around with operator overloading, I used that thing to demonstrate some code:
+
+```nix
+let
+  __mul = x: y:
+    if builtins.typeOf y != "lambda" then x y
+    else
+      z: x (y z);
+in
+  builtins.attrNames * builtins.readDir ./.
+```
+
+The operator overloading obviously isn't that important here... but it's still fun to show off By the way, this would provide you with a list of files in the current directory. (e.g. `[ ".git" "Documents" "Downloads" ]`)
+
+So, with that knowledge, I set out to figure out how I could generate a list of files that the `imports` property could read. After a short while, I found a [Reddit comment](https://www.reddit.com/r/NixOS/comments/j5pa9o/comment/g81dvop) that demonstrated usage of the `map` function accompanied by our previous findings, `attrNames` and `readDir`. In Nix, `map` works similarly as in JS, as in that the following Nix code:
+
+```nix
+map (e: "test ${e}") [1 2 3]
+```
+
+...would give output similar to this JS code:
+
+```js
+["a", "b", "c"].map((e) => `test ${e}`);
+```
+
+The code this Reddit user gave would read the current dir, which would give output like `{ "test.nix" = "regular"; }`, run `attrNames` on that, which outputs a list of key names in the object, e.g. `[ "test.nix" ]`, and then stick the path to the current derivation in front of it, like so: `/nix/store/<id>-alymac/test.nix`.
+
+This works fine! There are no issues with this approach! Except for one. What if I want subdirectories? Well, you can't. `readDir` gives you all files in the current directory, no more no less. After a bit of snooping in nixpkgs' `lib` folder, I found _just_ the function I need, [`listFilesRecursive`](https://github.com/NixOS/nixpkgs/blob/c8cb1f7a2df211360ff492b13ffdf896a8c25d00/lib/filesystem.nix#L144-L157).
+
+After only a couple invocations of this function in the REPL, I came to the solution on how to use it. I could get rid of the call to `attrNames`, as `listFilesRecursive` outputs a list of full paths to files, not an object. With this knowledge, I edited my invocation as follows:
+
+```nix
+map (n: "${n}") (lib.filesystem.listFilesRecursive ./.)
+```
+
+One caveat I found with this approach was that because `listFilesRecursive` outputs a list of _full paths_ instead of just filenames, I was no longer able to pop the path to the current derivation in front of `n`, because instead of `n` being a simple filename, it was now... a `/nix/store` path to that file. As in, `/nix/store/<id>-test.nix`. That's what I get for using full paths. I guess what I could do is take the full path to the current file and trim off the irrelevant part, but it seems like more effort than it's worth, because now you'd have to take subdirectories into account again.
+
+And with that, my result code is as follows:
+
+```nix
+{
+  importMap = map
+    (n: "${n}")
+    (lib.filesystem.listFilesRecursive ./.);
+
+  importsFiltered =
+    builtins.filter
+      (x: !lib.strings.hasInfix "default" x)
+      importMap;
+}
+```
+
+It's not anything remarkable in any way, but this _did_ take me about an hour to accomplish.
+
+<details>
+  <summary>Code that got me to write this post (the post content is basically just my code comment but longer)</summary>
+  ```nix
+  let
+    # We've got a small issue here. I tested this in a repl, and what I've
+    # observed is that listFilesRecursive spits out [ /full/path/to/default.nix ],
+    # while builtins.readDir spits out { "default.nix" = "regular"; }
+    # In theory, this shouldn't be much of an issue, however, when using readDir
+    # I would be able to do `map (n: "${./.}/${n}"), while when using
+    # listFilesRecursive I have to use `map (n: "${n}").
+    # The difference here is that when using listFilesRecursive, `n` becomes
+    # `/nix/store/<ID>-default.nix`, meaning it can be used as-is, but when using
+    # `readDir` it becomes `default.nix`, meaning the string used in the map
+    # callback must be `"${./.}/${n}"` to get a path to the current derivation
+    # where the nix file lives in.
+    # Currently, I am unsure of the implications of having all files separately.
+    # To do it "the right way" I'd obviously prefer the nix files to be children
+    # of the alymac derivation, but it seems that if I want my map of imports to
+    # be generated from the entire directory listing, it isn't going to work out.
+    # The solution was slightly modified from this Reddit answer:
+    # <https://www.reddit.com/r/NixOS/comments/j5pa9o/comment/g81dvop/>
+    # So, let's get all files in the current directory...
+    importMap = map
+      (n: "${n}")
+      (lib.filesystem.listFilesRecursive ./.);
+    # importMap = map
+    #   (n: "${./.}/${n}")
+    #   (builtins.attrNames (builtins.readDir ./.));
+
+    # And filter out default.nix
+    importsFiltered =
+      builtins.filter
+        (x: !lib.strings.hasInfix "default" x)
+        importMap;
+
+in
+{
+home-manager = {
+users.alyxia = { ... }: { # Defined further above, a list of files to import.
+imports = importsFiltered;
+};
+};
+}
+
+```
+</details>
+```

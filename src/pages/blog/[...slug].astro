@@ -1,0 +1,33 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+// wtf
+const date = new Date(post.data.created);
+const [month, day, year] = [
+  date.getMonth(),
+  date.getDate(),
+  date.getFullYear(),
+];
+const dateStr = `${year}-${month}-${day}`;
+---
+
+<MainLayout>
+  <h1>{post.data.title}</h1>
+  <p>
+    <a href={post.slug}>{dateStr}</a>
+  </p>
+  <Content />
+</MainLayout>

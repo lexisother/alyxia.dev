@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) =>
+    new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf()
+);
+---
+
+<MainLayout>
+  {
+    posts.length === 0 ? (
+      <div>no available posts</div>
+    ) : (
+      <>
+        <h2>blog</h2>
+        <ul>
+          {posts.map((post) => {
+            // wtf
+            const date = new Date(post.data.created);
+            const [month, day, year] = [
+              date.getMonth(),
+              date.getDate(),
+              date.getFullYear(),
+            ];
+            const dateStr = `${year}-${month}-${day}`;
+
+            return (
+              <li>
+                <time datetime={dateStr}>{dateStr}</time>{" "}
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    )
+  }
+</MainLayout>

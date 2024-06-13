@@ -1,18 +1,17 @@
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
+@use "sass:math";
 
-@import './reset';
-@import './fonts';
-// @import './components';
+@import "./reset";
+@import "./fonts";
 
 @mixin desktop {
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     @content;
   }
 }
 
-$font-body: 'Inconsolata', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-body: "Inconsolata", system-ui, -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+  sans-serif;
 $font-heading: $font-body;
 
 $size-body: 1.6rem;
@@ -83,7 +82,13 @@ body {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .25), rgba(0, 0, 0, .25) 1px, transparent 2px, transparent 3px);
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25) 1px,
+      transparent 2px,
+      transparent 3px
+    );
   }
 }
 
@@ -95,7 +100,7 @@ body {
     height: 100vh;
     max-height: 100vh;
     overflow-y: auto;
-    transition: right .2s ease-in-out;
+    transition: right 0.2s ease-in-out;
 
     @include desktop {
       height: auto;
@@ -137,13 +142,13 @@ body {
 }
 
 i.emoji {
-  margin-right: .4rem;
+  margin-right: 0.4rem;
 }
 
 header {
   background: $darker-blue;
   border-radius: 0 $radius $radius 0;
-  padding: $box-padding 0 $box-padding*2 0;
+  padding: $box-padding 0 $box-padding * 2 0;
   min-width: $nav-width;
   font-size: $size-menu;
   position: relative;
@@ -196,8 +201,8 @@ header {
       text-decoration: none;
       color: #ffffff;
       font-weight: bold;
-      padding: .2rem .8rem;
-      border-radius: $radius/2;
+      padding: 0.2rem 0.8rem;
+      border-radius: math.div($radius, 2);
       font-size: $size-menu;
 
       &::before {
@@ -209,8 +214,8 @@ header {
   nav {
     p {
       background: $blue-gradient;
-      padding: .2rem .4rem .3rem .4rem;
-      margin-bottom: .6rem;
+      padding: 0.2rem 0.4rem 0.3rem 0.4rem;
+      margin-bottom: 0.6rem;
 
       i.emoji {
         text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
@@ -220,8 +225,8 @@ header {
     ul {
       display: flex;
       flex-flow: column nowrap;
-      row-gap: .4rem;
-      padding: 0 .8rem 0 2.6rem;
+      row-gap: 0.4rem;
+      padding: 0 0.8rem 0 2.6rem;
 
       li {
         position: relative;
@@ -261,7 +266,7 @@ a {
 
 main {
   $main-row-gap: 1.4rem;
-  padding: $box-padding*1.25 $box-padding;
+  padding: $box-padding * 1.25 $box-padding;
   background: $dark-blue;
   border-radius: $radius 0 0 0;
   display: flex;
@@ -293,7 +298,7 @@ main {
     }
   }
 
-  >article:not(:last-of-type) {
+  > article:not(:last-of-type) {
     border-bottom: 1px solid $blue-but-lighter;
     padding-bottom: 1.6rem;
   }
@@ -309,7 +314,7 @@ main {
   h2,
   h3 {
     font-weight: bold;
-    margin-bottom: -.8rem;
+    margin-bottom: -0.8rem;
     color: $clear-blue;
   }
 
@@ -341,12 +346,12 @@ main {
   ol {
     display: flex;
     flex-flow: column nowrap;
-    row-gap: .6rem;
+    row-gap: 0.6rem;
     padding-left: 2rem;
 
     ul,
     ol {
-      margin-top: .8rem;
+      margin-top: 0.8rem;
     }
 
     li::marker {
@@ -379,8 +384,8 @@ main {
     section {
       display: flex;
       flex-flow: column nowrap;
-      row-gap: .8rem;
-      margin-block-start: .8rem;
+      row-gap: 0.8rem;
+      margin-block-start: 0.8rem;
     }
   }
 
@@ -389,12 +394,12 @@ main {
     color: $lighter-blue;
     background: $blue;
     border-left: 4px solid $blue-but-lighter;
-    padding: .6rem .8rem .6rem 2.8rem;
+    padding: 0.6rem 0.8rem 0.6rem 2.8rem;
 
     &::before {
       content: "✎ ";
       position: absolute;
-      left: .8rem;
+      left: 0.8rem;
       color: #cec986;
     }
 
@@ -405,7 +410,7 @@ main {
     .status-meta {
       display: flex;
       flex-flow: row nowrap;
-      column-gap: .8rem;
+      column-gap: 0.8rem;
     }
   }
 
@@ -413,7 +418,7 @@ main {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 1.2rem;
-    row-gap: .4rem;
+    row-gap: 0.4rem;
 
     dt {
       color: $light-blue;
@@ -423,8 +428,8 @@ main {
   .badge-grid {
     display: flex;
     flex-flow: row wrap;
-    column-gap: .6rem;
-    row-gap: .4rem;
+    column-gap: 0.6rem;
+    row-gap: 0.4rem;
   }
 
   .highlight {
@@ -432,7 +437,7 @@ main {
 
     pre {
       padding: 1rem;
-      border-radius: $radius/2;
+      border-radius: math.div($radius, 2);
     }
 
     code,
