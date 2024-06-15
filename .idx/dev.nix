@@ -19,7 +19,8 @@
       "vscodevim.vim"
 
       # Project
-      "astro-build.astro-vscode"
+      # "astro-build.astro-vscode"
+      "Vue.volar"
       "unifiedjs.vscode-mdx"
       "dhall.dhall-lang"
       "dhall.vscode-dhall-lsp-server"
