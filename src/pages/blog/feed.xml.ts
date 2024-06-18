@@ -1,7 +1,8 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 
-import { dedent } from "ts-dedent";
+import { getContainerRenderer } from "@astrojs/mdx";
+import { loadRenderers } from "astro:container";
 
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { transform, walk } from "ultrahtml";
@@ -10,27 +11,22 @@ import sanitize from "ultrahtml/transformers/sanitize";
 
 import RSSRenderer from "../../components/RSSRenderer.astro";
 
-export const GET: APIRoute = async ({ generator }) => {
+export const GET: APIRoute = async () => {
   let baseUrl = import.meta.env.PROD
     ? "https://alyxia.dev"
     : "http://localhost:4321";
   if (baseUrl.at(-1) === "/") baseUrl = baseUrl.slice(0, -1);
 
-  const articles = await getCollection("blog");
+  const posts = await getCollection("blog");
 
   const items = [];
   const container = await AstroContainer.create({
-    renderers: [
-      {
-        name: "@astrojs/mdx",
-        serverEntrypoint: "astro/jsx/server.js",
-      },
-    ],
+    renderers: await loadRenderers([getContainerRenderer()]),
   });
 
-  for (const article of articles) {
+  for (const post of posts) {
     const html = await container.renderToString(RSSRenderer, {
-      params: { slug: article.slug },
+      params: { slug: post.slug },
     });
 
     const sanitized = await transform(html, [
@@ -49,28 +45,17 @@ export const GET: APIRoute = async ({ generator }) => {
     ]);
 
     items.push({
-      title: article.data.title,
-      description: article.data.description,
-      pubDate: new Date(article.data.created),
-      link: `/article/${article.slug}`,
+      title: post.data.title,
+      pubDate: new Date(post.data.created),
+      link: `/blog/${post.slug}`,
       content: sanitized,
     });
   }
 
   return await rss({
-    title: blog.rss.options.title,
-    description: blog.rss.options.description,
+    title: "alyxia.dev",
+    description: "a blog with insignificant contents",
     site: import.meta.env.SITE,
     items,
-
-    customData: dedent`
-      <webMaster>contact@sapphic.moe</webMaster>
-      <generator>${generator}</generator>
-      <image>
-        <url>${baseUrl}${base.images.favicon.fileName}</url>
-        <title>${blog.rss.options.title}</title>
-        <link>${baseUrl}</link>
-      </image>
-    `,
   });
 };
