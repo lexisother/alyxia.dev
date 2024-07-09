@@ -1,0 +1,222 @@
+---
+title: 'Applying hobby knowledge to work'
+draft: false
+created: 2024-06-15
+modified: 2024-06-15
+---
+
+For years now, I've been programming as a hobby. It's my passion to create, even if the things I make aren't perceived as useful. One thing I've noticed is that over the years, you start looking back on older projects as a reference for anything you're currently working on.
+
+Recently, my employer asked me to finish a plugin he was working on for the CMS we offer to clients. There's a library in the frontend code for the CMS that the creators wrote themselves that looked strangely familiar to something I've worked with before.
+
+But before I get to that, I have to explain _why_ this was so familiar.
+
+---
+
+## Classes in early JavaScript
+
+JavaScript didn't get any native support for classes until ES6 (which released in 2015) despite already having the `new` keyword which could call a function and return a new object with said function as the `.prototype.constructor` property.
+
+```js
+var a = function (name) {
+  this.name = name;
+
+  this.sayName = function () {
+    console.log('I am ' + this.name);
+  };
+};
+var Class = new a('Alyxia');
+
+Class.sayName();
+// => I am Alyxia
+```
+
+In 2006, [Dean Edwards](http://dean.edwards.name/) (who I can find surprisingly little about), published [Base.js](http://dean.edwards.name/weblog/2006/03/base/), a single file you could add to your website to ease the process of creating class-like objects in JavaScript.
+
+```js
+var object = Base.extend({
+  value: 'some data',
+  method: function () {
+    alert('Hello World!');
+  },
+});
+object.method();
+// ==> Hello World!
+```
+
+This way, anything that calls `extend` on `Base`, **is also inherently extendable.** So in this example, `object.extend(...)` would be completely valid, and the resulting object would _inherit_ any methods and properties from `object`.
+
+This system worked as follows, where `A` is `Base` and `C` is your class definition:
+
+1. Upon calling `B = A.extend(C)`, copy all properies and methods of `C` into a new object
+2. Set `C`'s prototype to that of `A`
+3. Link the inherited methods from `A` into `C`
+
+It sounds complex, but in practice, it's dead simple and quite intuitive.
+
+---
+
+## Simple Inheritance
+
+In 2008, [John Resig](https://github.com/jeresig), who is best known for his work on world-renowned library [jQuery](https://jquery.com), wrote an entire yet simple inheritance system in JavaScript for the in-progress book he was writing.
+
+After seeing many attempts at "class systems" in JavaScript, two were his favourites, namely Dean Edwards' Base.js, and something I'd never heard about before called [Prototype](http://prototypejs.org/).
+
+Resig wrote a blog post about his attempt [here](https://johnresig.com/blog/simple-javascript-inheritance/) if you're interested in the way the thing looked. All in all it's pretty similar to Base.js, except Resig's attempt had a considerably shorter implementation for the `extend` function.
+
+---
+
+## Impact
+
+The majority of game engines in the modern day are written in object oriented languages. This was no different back in 2010, with well known engines like Unity and Unreal Engine being written in C++. To clearly separate concerns in your game, it's typically recommended to use classes as well. (e.g. a base class `Entity` that `Player` and `Enemy` extend from)
+
+In late 2010, Polish developer Dominic Szablewski, otherwise known as [phoboslab](https://github.com/phoboslab), open sourced v1.14 of his game library [Impact](https://impactjs.com/).
+
+Impact, which is largely a "bring your own glue" game engine, was obviously also written before JavaScript had any coherent concept of classes. That's why Impact's core file directly included John Resig's implementation of the class system. Basically every system in the game, like entities, the input manager, the sound system, collision/background maps, were all written using `ig.Class.extend(...)`.
+
+This meant that, for example, fonts were simple to implement. Fonts are image files. The **font specific** functionality is in `ig.Font`, which is defined as...
+
+```js
+ig.Font = ig.Image.extends(...)
+```
+
+So even in Impact's own source code, it makes use of this system to separate concerns. The handy thing about this is that game developers could do the same thing; create their own extendable classes or extensions of existing ones.
+
+There was **one core difference** in comparison to Resig's implementation that Szablewski added himself: `ig.Class.inject`.
+
+## Injecting into classes
+
+What made Impact so different is its ability to inject into classes at runtime. The best way to explain is to just give an example:
+
+```js
+ig.Person = ig.Class.extend({
+  init: function (name) {
+    this.name = name;
+  },
+  sayName: function () {
+    console.log(this.name);
+  },
+});
+
+var me = new ig.Person('Alyxia');
+me.sayName();
+// => Alyxia
+
+ig.Person.inject({
+  sayName: function () {
+    console.log('Hello, my name is ' + this.name);
+  },
+});
+
+me.sayName();
+// => Hello, my name is Alyxia
+```
+
+To explain:
+
+1. Create a class named `Person` with a method that logs out the name
+2. Create a new instance of `Person` named `me` with name `Alyxia`
+3. Call `sayName`, which logs out the person's name
+4. **Inject into `ig.Person`** to change the functionality of `sayName`, permanently altering **all existing and future instances of `Person`**
+5. Call `sayName` again, showing our new output
+
+Technically, if you were to build a game with Impact, your game is inherently moddable.
+
+Speaking of...
+
+---
+
+## CrossCode
+
+[CrossCode](https://cross-code.com/) is an action RPG released in 2018, which started development in 2011.
+
+I've been in love with the game since I discovered it, and as such I've been a part of the modding community since late 2018. After people discovered how to run their own code before/during the game... modding became extremely easy. This is because it used Impact as the game engine. 95% of the game's core functionality is defined in Impact classes that are accessible through the global objects `ig` and `sc`.
+
+Nowadays, a good chunk of the mods for the game are written in [TypeScript](https://typescriptlang.org/). The requirement for comfortably being able to access stuff on `ig` and `sc`, and additionally call `extend` and `inject` on any classes, is writing _type definitions_ for everything.
+
+Community member [dmitmel](https://github.com/dmitmel) made great effort toward this goal during the development of the first big TypeScript mod, [crosscode-ru](https://github.com/CCDirectLink/crosscode-ru), which is a Russian translation of the game. To properly mod the game in TS, he wrote type definitions (labeled the "Ultimate CrossCode Typedefs", later in this post referenced as UCCTD) which eventually resulted in a [single repository](https://github.com/CCDirectLink/ultimate-crosscode-typedefs) specifically meant for containing typedefs for the entire game.
+
+The most important and core part of these typedefs are the definitions of Impact's class system.
+
+For global classes in the game, like `sc.ItemListBox`, we can define them like this:
+
+```ts
+declare global {
+  namespace sc {
+    interface ItemListBox extends ig.GuiElementBase {
+      list: sc.ButtonListBox;
+
+      clear(this: this, skip?: Nullable<boolean>): void;
+      addButton(this: this, gui: ig.FocusGui): void;
+      getChildren(this: this): ig.FocusGui[];
+    }
+    interface ItemListBoxConstructor extends ImpactClass<ItemListBox> {
+      new (
+        topPadding: number,
+        noHeader: boolean,
+        buttonInteract: ig.ButtonInteractEntry,
+      ): ItemListBox;
+    }
+    var ItemListBox: ItemListBoxConstructor;
+  }
+}
+```
+
+Here we see a couple things:
+
+1. The `ItemListBox` interface properly extends from `ig.GuiElementBase`, which is defined elsewhere in a similar fashion. Second, all the properties in this interface will be available to instances of the class. (so after calling `new` on it) Third, the `ItemListBoxConstructor` acts as our "callable constructor" and contains the arguments we pass to the constructor. Last, the `ItemListBox` var is a reference to our constructor and is the thing that eventually appears on the `sc` namespace.
+
+So, now we've got type definitions for `sc.ItemListBox` so we can call it as normal code, with type checking. Why am I highlighting this project though...?
+
+---
+
+## The actual gist of the post
+
+At work, we use [CraftCMS](https://craft-cms.com) to build websites for customers. The point is that we architecture the CMS in such a way that eventually, customers can completely self-manage their websites content-wise, so we won't even have to intervene with over 60% of changes they want made.
+
+Craft supports plugins. There's many companies and organisations making these plugins, but it's perfectly normal for a regular developer to make their own plugin for some niche feature if it doesn't already exist. We had to do this for a couple customers, namely store owners, so they can specify their store's opening times in a nice table and add exceptions to those specified times.
+
+So, I was put to work. I got most of the functionality out of the way pretty easily since one of my coworkers had done the majority of the work before I got started on it, but the main problem now was rendering nicely editable tables with time selectors so people authoring one of these opening hour tables wouldn't have to type so much manually. Additionally, it had to be possible to **create a new period** below an existing one so you could, for example, say that from January through March you were opened from 8am to 5pm, and from that point onwards from 9am to 4pm.
+
+To create one of these editable tables, most plugin developers use Craft's very own `Craft.EditableTable` which conveniently exists on the `window`. Cool!
+
+As clueless me traveled to the Craft GitHub repository to take a look at the source code for this thing, I stumbled across something weird. The definition of the object looked like...
+
+```js
+Craft.EditableTable = Garnish.Base.extend({
+  /* ... */
+});
+```
+
+Huh. That's weird. What's Garnish? I delved further and further through Craft's AssetBundles until I found a folder labeled `garnish`, and looked in there. After a bit of poking through there, I found a file called `Base.js`, which started with...
+
+```js
+/*!
+	Base.js, version 1.1a
+	Copyright 2006-2010, Dean Edwards
+	License: http://www.opensource.org/licenses/mit-license.php
+*/
+```
+
+Ah. Well, isn't that interesting.
+
+Now, this is all fine and dandy, but my Craft plugin's frontend logic is using TypeScript. If only there was a solution to this problem...
+
+---
+
+## The Ultimate Craft CMS Typedefs
+
+When I saw the way Base.js classes worked, I immediately knew I could cobble something functional together by referencing UCCTD's Impact class definitions. There was just one striking difference between Impact classes and Base.js classes: the second argument to `extend`. This is what allows the developer to declare static properties on a class. (`.extend({ /* instance properties */}, { /* static properties */})`)
+
+Impact classes do not have this, so I couldn't just use UCCTD's definitions out of the box. I ended up turning to my good friend Nax who eventually figured out how to properly type this functionality. After this was done, I created the empty stub type for Garnish's Base class, and with that, I can now write typings for Craft's classes.
+
+The way they're defined is pretty much identical to what I've shown off for UCCTD, with two differences:
+
+1. naming (`ImpactClass` becomes `BaseClass`)
+2. two generics instead of 1 in `BaseClass` (`BaseClass<Instance, Static>`)
+
+And that's how I applied knowledge I garnered from hobby projects over the years to something I actually need to do in my work. The overlap is just a small coincidence, but it's still really cool to me.
+
+---
+
+Honestly, for one of my first long-form posts, this is awful. Way too much talking for a point I could've explained in a {'<'}=100 word post on some social media. This post also took me several months to finish due to how unmotivated I was to write it. Let it be known that posts like this are not my forte, but I just wanted to write about something. Hope it turned out OK.
