@@ -334,12 +334,20 @@ main {
     content: " ·✧";
   }
 
+  strong {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+
   hr {
     width: 100%;
     margin: 0;
     border-color: #30475b;
     border-style: double;
-    border-width: 3px 0 0 0;
+    border-width: 1px 0 0 0;
   }
 
   ul,
@@ -425,6 +433,23 @@ main {
     }
   }
 
+  code {
+    padding: 0.1em 0.2em;
+    background-color: #24292e;
+    border: rgba(124, 124, 124, 1) 1px solid;
+  }
+
+  pre {
+    border: rgba(124, 124, 124, 1) 1px solid;
+    padding: 1rem;
+
+    code {
+      border: none;
+      background-color: transparent;
+      padding: unset;
+    }
+  }
+
   .badge-grid {
     display: flex;
     flex-flow: row wrap;
@@ -455,3 +480,4 @@ footer {
   color: $light-blue;
   font-size: $size-menu;
 }
+
