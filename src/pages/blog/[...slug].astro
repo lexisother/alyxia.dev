@@ -15,8 +15,7 @@ const post = Astro.props;
 const { Content } = await post.render();
 
 const date = new Date(post.data.created);
-const dateStr = new Intl.DateTimeFormat('en-GB')
-  .format(date)
+const dateStr = date.toLocaleDateString('en-GB')
   .replaceAll("/", "-");
 ---
 

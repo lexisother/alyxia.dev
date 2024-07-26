@@ -18,8 +18,7 @@ const posts = (await getCollection("blog")).sort(
         <ul>
           {posts.map((post) => {
             const date = new Date(post.data.created);
-            const dateStr = new Intl.DateTimeFormat('en-GB')
-              .format(date)
+            const dateStr = date.toLocaleDateString('en-GB')
               .replaceAll("/", "-");
 
             return (
