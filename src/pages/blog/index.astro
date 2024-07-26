@@ -17,14 +17,10 @@ const posts = (await getCollection("blog")).sort(
         <h2>blog</h2>
         <ul>
           {posts.map((post) => {
-            // wtf
             const date = new Date(post.data.created);
-            const [month, day, year] = [
-              date.getMonth(),
-              date.getDate(),
-              date.getFullYear(),
-            ];
-            const dateStr = `${year}-${month}-${day}`;
+            const dateStr = new Intl.DateTimeFormat('en-GB')
+              .format(date)
+              .replaceAll("/", "-");
 
             return (
               <li>

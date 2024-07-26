@@ -14,14 +14,10 @@ type Props = CollectionEntry<"blog">;
 const post = Astro.props;
 const { Content } = await post.render();
 
-// wtf
 const date = new Date(post.data.created);
-const [month, day, year] = [
-  date.getMonth(),
-  date.getDate(),
-  date.getFullYear(),
-];
-const dateStr = `${year}-${month}-${day}`;
+const dateStr = new Intl.DateTimeFormat('en-GB')
+  .format(date)
+  .replaceAll("/", "-");
 ---
 
 <MainLayout>
