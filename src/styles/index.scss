@@ -145,6 +145,10 @@ i.emoji {
   margin-right: 0.4rem;
 }
 
+.badge {
+  image-rendering: pixelated;
+}
+
 header {
   background: $darker-blue;
   border-radius: 0 $radius $radius 0;

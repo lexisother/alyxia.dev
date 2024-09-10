@@ -11,7 +11,7 @@ import selfBadge from "/static/img/88x31/self.png?url";
       <slot />
     </main>
     <footer>
-      <img :src="selfBadge" />
+      <img :src="selfBadge" class="badge" />
       {{ " " }}
       <span>♥</span>
       {{ " " }}
