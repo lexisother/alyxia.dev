@@ -119,7 +119,7 @@ let friends =
       , Friend::{
         , name = "Amy"
         , image = "amy.gif"
-        , link = "https://oomfie.town"
+        , link = "https://oomfie.gitlab.io"
         }
       , Friend::{
         , name = "Molten"
