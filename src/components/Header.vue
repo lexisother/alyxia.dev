@@ -14,7 +14,7 @@ let [opened, toggleOpen] = useToggle(false);
     </button>
     <div class="h-card">
       <img class="u-photo" :src="aly" width="48" height="48" />
-      <a class="p-name p-author u-url" href="https://alyxia.dev">alyxia</a>
+      <a class="p-name p-author u-url" href="/">alyxia</a>
     </div>
     <nav>
       <template v-for="hnav in hnavs">
