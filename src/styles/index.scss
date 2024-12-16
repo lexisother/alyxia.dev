@@ -1,7 +1,7 @@
 @use "sass:math";
 
-@import "./reset";
-@import "./fonts";
+@use "./reset";
+@use "./fonts";
 
 @mixin desktop {
   @media (min-width: 768px) {
@@ -484,4 +484,3 @@ footer {
   color: $light-blue;
   font-size: $size-menu;
 }
-
