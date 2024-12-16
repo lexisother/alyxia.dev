@@ -12,6 +12,11 @@ let friends =
         , link = "https://sapphic.moe"
         }
       , Friend::{
+        , name = "Espi"
+        , image = "espi.png"
+        , link = "https://espi.me"
+        }
+      , Friend::{
         , name = "Lily"
         , image = "lily.png"
         , link = "https://lylythii.com"
@@ -26,26 +31,80 @@ let friends =
         , image = "lynne.png"
         , link = "https://youtu.be/K6TtKNB1fWg"
         }
-      , Friend::{ name = "Nax", image = "nax.png", link = "https://nax.dev" }
+      , Friend::{
+        , name = "Nax"
+        , image = "nax.png"
+        , link = "https://nax.dev"
+        }
+      , Friend::{
+        , name = "Basil"
+        , image = "basil.gif"
+        , link = "https://basil.cafe"
+        }
       , Friend::{
         , name = "Maisy"
         , image = "maisy.png"
         , link = "https://maisy.moe"
         }
       , Friend::{
-        , name = "birb"
-        , image = "birb.png"
-        , link = "https://miaowi.ng"
+        , name = "maeve"
+        , image = "maeve.png"
+        , link = "https://miaow.ing"
         }
       , Friend::{
         , name = "Maggie"
         , image = "maggie.gif"
-        , link = "https://iusearchbtw.fun"
+        , link = "https://maggiepi.site"
+        }
+      , Friend::{
+        , name = "Aubrey"
+        , image = "aubrey.png"
+        , link = "https://aubrey.rs"
         }
       , Friend::{
         , name = "Maru"
         , image = "maru.png"
         , link = "https://maru.olcese.com.ar"
+        }
+      , Friend::{
+        , name = "notnite"
+        , image = "notnite.png"
+        , link = "https://notnite.com"
+        }
+      , Friend::{
+        , name = "nta"
+        , image = "nta.png"
+        , link = "https://ntauthority.me"
+        }
+      , Friend::{
+        , name = "prefetcher"
+        , image = "prefetcher.gif"
+        , link = "https://nanoshinono.me"
+        }
+      , Friend::{
+        , name = "hayden"
+        , image = "hayden.png"
+        , link = "https://hayden.moe"
+        }
+      , Friend::{
+        , name = "0x5066"
+        , image = "0x5066.gif"
+        , link = "https://erisdump.neocities.org"
+        }
+      , Friend::{
+        , name = "onzecki"
+        , image = "onzee.png"
+        , link = "https://onz.ee"
+        }
+      , Friend::{
+        , name = "amemoia"
+        , image = "amemoia.gif"
+        , link = "https://buh.moe"
+        }
+      , Friend::{
+        , name = "Wam"
+        , image = "wam.png"
+        , link = "https://wamwoowam.co.uk/"
         }
       , Friend::{
         , name = "Dank"
@@ -91,6 +150,21 @@ let friends =
         , name = "Jusuf"
         , image = "jusuf.png"
         , link = "https://fx2.vercel.app"
+        }
+      , Friend::{
+        , name = "M6"
+        , image = "m6.gif"
+        , link = "https://m6.wtf"
+        }
+      , Friend::{
+        , name = "golden"
+        , image = "golden.png"
+        , link = "https://goldenstack.net"
+        }
+      , Friend::{
+        , name = "nullablevoid"
+        , image = "nullablevoid.png"
+        , link = "https://nullablevo.id.au"
         }
       ]
 
