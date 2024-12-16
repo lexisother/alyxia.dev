@@ -29,6 +29,7 @@ let [opened, toggleOpen] = useToggle(false);
           </li>
         </ul>
       </template>
+      <script src="https://transring.neocities.org/ring.js" data-widget="cloud"></script>
     </nav>
   </header>
 </template>
