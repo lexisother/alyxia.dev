@@ -164,7 +164,9 @@ declare global {
 
 Here we see a couple things:
 
-1. The `ItemListBox` interface properly extends from `ig.GuiElementBase`, which is defined elsewhere in a similar fashion. Second, all the properties in this interface will be available to instances of the class. (so after calling `new` on it) Third, the `ItemListBoxConstructor` acts as our "callable constructor" and contains the arguments we pass to the constructor. Last, the `ItemListBox` var is a reference to our constructor and is the thing that eventually appears on the `sc` namespace.
+1. The `ItemListBox` interface properly extends from `ig.GuiElementBase`, which is defined elsewhere in a similar fashion
+2. All the properties in this interface will be available to instances of the class. (so after calling `new` on it) Third, the `ItemListBoxConstructor` acts as our "callable constructor" and contains the arguments we pass to the constructor.
+3. The `ItemListBox` var is a reference to our constructor and is the thing that eventually appears on the `sc` namespace.
 
 So, now we've got type definitions for `sc.ItemListBox` so we can call it as normal code, with type checking. Why am I highlighting this project though...?
 
