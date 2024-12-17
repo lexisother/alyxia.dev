@@ -24,8 +24,10 @@ let [opened, toggleOpen] = useToggle(false);
         </p>
         <ul>
           <li v-for="nav in hnav.links">
-            <i class="emoji" aria-hidden="true">{{ nav.emoji }}</i>
-            <a :href="nav.link">{{ nav.name }}</a>
+            <a :href="nav.link">
+              <i class="emoji" aria-hidden="true">{{ nav.emoji }}</i>
+              {{ nav.name }}
+            </a>
           </li>
         </ul>
       </template>
