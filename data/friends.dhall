@@ -166,6 +166,11 @@ let friends =
         , image = "nullablevoid.png"
         , link = "https://nullablevo.id.au"
         }
+      , Friend::{
+        , name = "Aria"
+        , image = "aria.gif"
+        , link = "https://aria.coffee"
+        }
       ]
 
 in  friends
