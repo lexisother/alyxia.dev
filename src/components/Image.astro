@@ -1,0 +1,13 @@
+---
+import { Image as AImage } from "astro:assets";
+const { clazz, src, width, height, style } = Astro.props;
+---
+
+<AImage
+  class={clazz}
+  src={src}
+  width={width}
+  height={height}
+  style={style}
+  alt=""
+/>

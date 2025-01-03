@@ -1,0 +1,250 @@
+---
+title: "2024 in Review"
+draft: false
+created: 2024-12-31
+modified: 2025-01-02
+---
+
+import Image from "../../components/Image.astro";
+import statusImg from "../../images/statuspaginator.png";
+import storybookImg from "../../images/storybook.png";
+
+Today marks the last year of 2024. It was quite the turbulent year, but for me it's been quite a positive one. Which I'm glad I'm able to say, given how the past couple of years haven't exactly been favourable.
+
+I've accomplished a lot this year, and I'd like to go over a couple of them.
+
+## Events
+
+- I graduated from school.
+- I turned 19.
+
+## Personal projects
+
+### alyxia.dev
+
+Late 2023, I redid my website's design and internals using [ReScript](https://rescript-lang.org/) after a failed attempt where I used Common Lisp with [Sytes](https://github.com/mishoo/sytes).
+
+Unfortunately both of these attempts failed due to one deciding factor: I didn't work with the languages often enough to remember how to use them. I don't update my website every week, not even every month. The most I might do is add some people's 88x31 badges to my friends page. This obviously meant that I barely touched the code part of the project, and as a result I barely remembered how to do some things after a while of not working on it.
+
+Not long after making this realisation, I decided it was time to say goodbye to ReScript and move to something I actually knew how to maintain in the long run. So, I took the design with me and moved to [Astro](https://astro.build/). I decided to use Vue for the majority of the frontend components because it was handy for fetching dynamic data like my Last.fm songs & my [status.cafe](https://status.cafe/) status.
+
+### AlyCMS
+
+Somewhere near the start of 2024, I did some final feature implementations and bugfixes to my own content management system, [AlyCMS](https://github.com/lexisother/AlyCMS), and left the project there. It'll take a lot more time for this tool to become viable and potentially function as the actual content source for this blog, but it's time I either don't have or am not willing to spend working on it.
+
+However, due to the rising attention of social network Bluesky's protocol [ATProto](https://atproto.com), I figured I'd try my hand at implementing authentication and data storing using it. I inevitably got stuck and put my work on [this branch](https://github.com/lexisother/AlyCMS/commits/atproto), which I intend to finish sometime in the future.
+
+### Misc
+
+Besides all that, here's a loosely date-sorted list of stuff I've done.
+
+- Overhauled the project structure of [CCLoader3](https://github.com/CCDirectLink/CCLoader3)
+- Tried to write a modloader for a game about coffins
+- Wrote a version archiving toolchain for a game about coffins
+- Made some fixes to [Frenyard](https://github.com/lexisother/frenyard)
+- Wrote a [Raycast extension](https://github.com/lexisother/raycast-extensions)
+- Wrote a somewhat functional [music bot](https://github.com/lexisother/Phonograph)
+- Wrote a [Spicetify](https://spicetify.app/) [plugin](https://github.com/lexisother/spicetify-macropad) to control media playback with my macropad
+- Wrote a couple [Coder](https://coder.com/) [templates](https://github.com/lexisother/coder-templates)
+- Together with friends, started a modloader for a rhythm game
+- Wrote a converter for osu!mania charts to said rhythm game
+- Wrote a couple [ULTRAKILL mods](https://github.com/lexisother/UltrakillMods) in F#
+- Started working on a website for a local scouts group
+- [Tasky](https://github.com/taskylizard) and I made a somewhat successful attempt at obtaining [Mintlify's](https://mintlify.com/) source code and using it to build a static docs site
+- Wrote a script to mirror an entire GitLab organisation to GitHub
+
+## Brik.digital
+
+Like last year, I'd like to take a moment to look back on the various projects I've worked on for my job this year. It's been a rather turbulent year and personally I believe I've made some crucial contributions to the very way we work in our development team. Aside from that, I've managed to even publicise some of the work.
+
+### Project Baseplate
+
+Most notably, this year I spearheaded the development of our project template. The one we used before was originally made for Craft 3, using now outdated standards and toolchains, which we upgraded along the way as we saw fit. It currently does use Craft 5, but it still employs a bunch of outdated and suboptimal strategies, because the _way_ the template does things was never changed. New things were just tacked on.
+
+So, after a couple of internal discussions to figure out what we needed/wanted, I was given the green light to start working on a new template from scratch. I started out by bumping any dependencies we wanted to carry over to their latest versions, and got to work. My first order of business; come up with a better system for our JavaScript.
+
+I made the decision to ditch our old JS code (which in most projects always ended up being stuffed into the main `app.js` file) and replace it with a neat TS based dynamic importing system. It works as follows:
+
+```typescript
+import ComponentLoader, { Component } from "./loader";
+
+const componentLoader = new ComponentLoader();
+const components: Component[] = [
+  {
+    name: "alpine",
+    selector: "[data-alpine]",
+  },
+];
+
+for (let component of components) {
+  componentLoader.loadComponent(
+    component.name,
+    component.selector,
+    component.plugins ?? []
+  );
+}
+```
+
+This will dynamically load the `components/alpine.ts` file when an element with the `data-alpine` attribute exists on the page. Said file exports a default function which will then get executed. It allows us to lower the amount of code loaded and executed when certain elements aren't even present on the page. Very neat, and very clean.
+
+Another big thing I introduced was the use of [Storybook](https://storybook.js.org/), which wasn't just something new for our team, but is something **I pioneered in the public Craft CMS community**. There are old projects on GitHub that demonstrate the use of Storybook in a Craft CMS environment, but they were terrible hacks. One of them even rendered the Twig templates client-side by using a JS implementation of Twig. A 2021 talk concluded that it was “terribly difficult” to integrate Storybook into Craft CMS.
+
+After more discussing of the idea internally, I started working on an integration, and… got it [functional](https://github.com/brikdigital/craft-baseplate/commit/2ab608010a54dff5edb8cb6f9709e942f043f835) in a single night of work. The way it works is rather simple:
+
+1. We override Storybook's `fetchStoryHtml` function and make a request to a custom controller with the path to the current `.stories.json` file along with all the selected properties/options
+2. We fetch the corresponding `.twig` file on the server, construct a fake Twig template in a string in which we place the contents of our component's `.twig` file, and render it
+3. We send the resulting HTML back to Storybook
+4. We do some final post-processing of the returned HTML on Storybook's side and send it off to the renderer
+
+<Image src={storybookImg} style="width: 100%; height: auto" />
+
+We've been working with Storybook since I added it, which is about two to three months ago. There were some bumps here and there which I managed to iron out pretty well, but I've heard nothing but positive feedback from my coworkers, so I think this was a good addition to our workflow. On top of that, we can statically build Storybook and serve it on a project's staging domain, which we can then hand over to the design team for review. Using something like [Marker.io](https://marker.io/) within Storybook allows us to have a very fluent workflow from design, implementation, and feedback.
+
+### composer-patches-regex
+
+#### The problem
+
+Internally, we sometimes use [composer-patches](https://github.com/cweagans/composer-patches), a project much like pnpm's builtin patching functionality, to apply changes to dependencies before installing them. It, much like pnpm's functionality, has one fatal flaw: it relies on diff files. It might not sound like a big deal, because you can just pin the dependency version and ensure the patch always applies, but for a fast-moving project like Craft that releases a new version every week, this isn't exactly ideal, because there's a small catch when using diff files for patches.
+
+For those unaware, here's a sample excerpt from a patch:
+
+```none
+diff --git a/src/elements/Asset.php b/src/elements/Asset.php
+index acde040fb2..568475202e 100644
+--- a/src/elements/Asset.php
++++ b/src/elements/Asset.php
+@@ -276,7 +276,7 @@ class Asset extends Element
+      */
+     public static function isLocalized(): bool
+     {
+-        return true;
++        return false;
+     }
+
+     /**
+```
+
+What this basically says is “on line 276, replace what is prepended with a `-` with what is prepended with a `+`”
+
+If you haven't figured out the problem with this at first glance, let me once again point you to the fact that it **relies on line numbers to tell the patch applier where the changes are.** So what happens if code is inserted **above** the lines I'm patching? The line numbers for the lines I'm patching **increase**, of course, meaning that my patch now no longer applies.
+
+My solution to this was simple. And it all comes back to Discord client modding. A couple well known projects use something we call “plaintext patching” to change Discord's code. The way code is patched, in essence, is like this:
+
+```javascript
+// Original content
+const calculateSum = (a, b) => a + b;
+
+// Patch
+const patch = {
+  find: /a + (b)/,
+  replace: (_, b) => `a + 10 + ${b}`,
+};
+
+// Changed content
+const calculateSum = (a, b) => a + 10 + b;
+```
+
+We can make clever use of Regex capturing groups to carry over or reference original pieces of code in our replacements, or get rid of code entirely if we so desire. So I figured… why not take the same approach for Composer dependencies?
+
+#### The solution
+
+To remedy my gripes with the way `composer-patches` works, I built `composer-patches-regex`, an extension upon the original package to allow for regex replacements in dependencies. A patch for `composer-patches-regex` looks like this:
+
+```json
+{
+  "patches": {
+    "scope/packagename": [
+      {
+        "files": {
+          "someFile": [
+            {
+              "find": "/some/",
+              "replace": "a bit of"
+            },
+            {
+              "find": "/original/g",
+              "replace": "copied"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+A couple fields required to make this all word were omitted for brevity, but it's enough to show off the gist of what we're doing here. We specify a file using the key in the `files` object, and specify the patches to execute on this file. Similarly to the JS based approach, we can leverage capture groups and specify them in our replacements using `$1`, `$2`, andsoforth. The numbers are ordered in the appearance of the capture groups.
+
+Sure, this solution isn't entirely waterproof, but it sure will hold up a lot longer than diff files, as we now no longer depend on the **position** of the code, but instead the **structure** of it, which is obviously much less likely to change.
+
+### Statuspaginator
+
+Statuspaginator was a project I started building in late 2023 and having received mostly neglect since then, its main purpose being giving us a clear overview of the different Craft CMS sites we were running and which versions they were on. This would be especially useful in the rare case a security vulnerability was found in Craft, and was the main reasoning behind the project's development.
+
+Fast forward to December 18 2024, on a peaceful evening, at 8PM… [GHSA-2p6p-9rc9-62j9](https://github.com/craftcms/cms/security/advisories/GHSA-2p6p-9rc9-62j9) was published. A critical RCE vulnerability was found. At that very moment, Statuspaginator finally demonstrated its usefulness, as every affected site now lit up red:
+
+<Image src={statusImg} style="width: 100%; height: auto" />
+
+For the sites that were being tracked by Statuspaginator (which is frankly a fraction of the projects we run) we could easily see which projects were affected and which weren't. Despite the circumstances, I felt a sense of pride knowing the thing I built actually did its job pretty well.
+
+### marker-to-youtrack
+
+Sometime in August we were figuring out if we wanted to migrate from Jira to JetBrains YouTrack. Jira is expensive, especially so since we're paying for a lot of functionality we barely use. After a whole lot of research, we found there was only a single blocking issue keeping us from migrating: integration with Marker.io. Marker is a crucial part of how we let our clients submit feedback to our Jira service desk, which is made particularly easy through Marker's builtin integration with Jira. This wasn't something we were willing to lose, so I took matters into my own hands and built [marker-to-youtrack](https://github.com/lexisother/marker-to-youtrack).
+
+There was just one issue… Marker doesn't have a public API. There has been an open [feature request](https://feedback.marker.io/feature-request/p/markerio-api) since late 2022, but despite the attention given to it, nothing's been done with it so far. My solution? [Puppeteer](https://pptr.dev/). The process is simple:
+
+1. Start a Puppeteer instance and navigate to Marker's signin page
+2. Input the email and password
+3. Wait for Marker's dashboard to load
+4. Fetch the browser's cookies and extract the `markersess` cookie
+
+Now I could monitor the devtools' network tab and see what requests Marker made to its own API to fetch data. I figured out what request was made to obtain a full list of projects, and at that point I could configure a webhook on a Marker project to send events to marker-to-youtrack's URL. I got whatever data I needed from the project through the webhook event (for example, a new Marker issue), fetched any additional project data from the previously obtained list of Marker projects, and created a corresponding ticket in YouTrack.
+
+In essence, a very simple tool, but it was a nice challenge regardless!
+
+### Craft plugins
+
+Aside from all of the above, I've also brought new life to our GitHub organisation by publicising a good chunk of the work I've been doing. Here's a small overview:
+
+- Wrote TypeScript type definitions for Craft's `window` globals on [craftcms-typedefs](https://github.com/brikdigital/craftcms-typedefs)
+- [Upgraded](https://github.com/brikdigital/craft-readtime) the unmaintained Craft Readtime plugin to Craft 5
+- Wrote a [plugin](https://github.com/brikdigital/opening-hours) that adds a custom field type for specifying a store's opening times
+- [Upgraded](https://github.com/brikdigital/craft-scss) the unmaintained Craft SCSS plugin to Craft 5
+- [Upgraded](https://github.com/brikdigital/craft-cookiebot) the unmaintained Craft Cookiebot plugin to Craft 5
+- Published [entry-navigation](https://github.com/brikdigital/entry-navigation), a plugin to edit navigation nodes from an entry's editing page
+- Published [entry-type-permissions](https://github.com/brikdigital/entry-type-permissions), a plugin to allow fine-grained permissions of entry type creation
+
+## Advent of Code
+
+As per usual, I hosted my annual Advent of Code leaderboard this year. I asked the participants of last year if they wanted to participate again, and brought in some new folks too. Besides that, I started using the rather handy [aockit](https://github.com/aockit/aockit) by Tasky to support using arbitrary programing languages for my solutions instead of locking myself into TS for the auto-downloading of inputs.
+
+Thank you to all participants, in no particular order:
+
+- image unavailable
+- Isabel
+- M6
+- maeve
+- marsh
+- Nax
+- Snare
+- Mopi
+- Anya
+- Basil
+- Janneke
+- Krypek
+- Maru
+- Niels
+- 20
+- Tasky
+
+This year exceeded my expectations once again, and I'm glad I'm able to host this little leaderboard for my friends every year. It brings me pure joy to see folks interact with eachother and see what solutions they come up with to the problems presented.
+
+I hope to see you all again next year. :)
+
+---
+
+…and that just about rounds this year up. Looking back at everything, it sure was an eventful one. It took me about three days to write this all out, both because I have trouble writing long-form stuff, but also because I kept having to look back through my account histories. There's a lot more I've done that I haven't explicitly written out here, and if you're really **that** interested, feel free to take a look at my [GitHub](https://github.com/lexisother).
+
+Lastly I'd like to express my gratitude to everyone I've talked to this year. I've made a bunch of new friends and livened up my [friends page](/friends) as a result. Thank you all for sticking around.
+
+Late happy new year's to you all!
