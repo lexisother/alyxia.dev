@@ -171,6 +171,16 @@ let friends =
         , image = "aria.gif"
         , link = "https://aria.coffee"
         }
+      , Friend::{
+        , name = "Rain"
+        , image = "slonking.png"
+        , link = "https://slonk.ing"
+        }
+      , Friend::{
+        , name = "yui"
+        , image = "zptr.png"
+        , link = "https://zptr.cc/"
+        }
       ]
 
 in  friends
