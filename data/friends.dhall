@@ -54,7 +54,7 @@ let friends =
       , Friend::{
         , name = "Maggie"
         , image = "maggie.gif"
-        , link = "https://maggiepi.site"
+        , link = "https://maggiepi.fyi"
         }
       , Friend::{
         , name = "Aubrey"
@@ -114,7 +114,7 @@ let friends =
       , Friend::{
         , name = "Mopi"
         , image = "mopi.jpg"
-        , link = "https://estrogen.monster"
+        , link = "https://mopigames.gay"
         }
       , Friend::{
         , name = "Amy"
@@ -124,12 +124,7 @@ let friends =
       , Friend::{
         , name = "Molten"
         , image = "molten.png"
-        , link = "https://moltencoredev.github.io"
-        }
-      , Friend::{
-        , name = "Baph"
-        , image = "baph.gif"
-        , link = "https://hentainetwork.xyz"
+        , link = "https://mihao.pl"
         }
       , Friend::{
         , name = "Marvin"
@@ -180,6 +175,11 @@ let friends =
         , name = "yui"
         , image = "zptr.png"
         , link = "https://zptr.cc/"
+        }
+      , Friend::{
+        , name = "ezri"
+        , image = "ezri.png"
+        , link = "https://ezri.pet"
         }
       ]
 
