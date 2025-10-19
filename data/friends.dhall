@@ -47,6 +47,11 @@ let friends =
         , link = "https://maisy.moe"
         }
       , Friend::{
+        , name = "tasky"
+        , image = "tasky.webp"
+        , link = "https://tasky.nuxt.dev"
+        }
+      , Friend::{
         , name = "maeve"
         , image = "maeve.png"
         , link = "https://miaow.ing"
