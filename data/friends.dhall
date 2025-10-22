@@ -27,6 +27,11 @@ let friends =
         , link = "https://kneesox.moe"
         }
       , Friend::{
+        , name = "rainf3ll"
+        , image = "rainf3ll.gif"
+        , link = "https://rainf3ll.github.io"
+        }
+      , Friend::{
         , name = "Lynne"
         , image = "lynne.png"
         , link = "https://youtu.be/K6TtKNB1fWg"
