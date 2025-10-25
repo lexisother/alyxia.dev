@@ -32,6 +32,11 @@ let friends =
         , link = "https://rainf3ll.github.io"
         }
       , Friend::{
+        , name = "Foko"
+        , image = "foko.png"
+        , link = ""
+        }
+      , Friend::{
         , name = "Lynne"
         , image = "lynne.png"
         , link = "https://youtu.be/K6TtKNB1fWg"
@@ -62,6 +67,26 @@ let friends =
         , link = "https://miaow.ing"
         }
       , Friend::{
+        , name = "robin"
+        , image = "robin.gif"
+        , link = "https://robinroses.xyz"
+        }
+      , Friend::{
+        , name = "elissa"
+        , image = "elissa.png"
+        , link = "https://elissa.moe"
+        }
+      , Friend::{
+        , name = "sydney"
+        , image = "sydney.png"
+        , link = "https://sydney.blue"
+        }
+      , Friend::{
+        , name = "zt64"
+        , image = "zt64.png"
+        , link = "https://zt64.dev"
+        }
+      , Friend::{
         , name = "Maggie"
         , image = "maggie.gif"
         , link = "https://maggiepi.fyi"
@@ -70,6 +95,11 @@ let friends =
         , name = "Aubrey"
         , image = "aubrey.png"
         , link = "https://aubrey.rs"
+        }
+      , Friend::{
+        , name = "ida"
+        , image = "ida.gif"
+        , link = "https://deerz.one"
         }
       , Friend::{
         , name = "Maru"
