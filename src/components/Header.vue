@@ -5,6 +5,7 @@ import { nav as hnavs } from "../../data/data.json";
 import { useToggle } from "@vueuse/core";
 
 let [opened, toggleOpen] = useToggle(false);
+const IS_DEV = import.meta.env.DEV;
 </script>
 
 <template>
@@ -31,7 +32,11 @@ let [opened, toggleOpen] = useToggle(false);
           </li>
         </ul>
       </template>
-      <script src="https://transring.neocities.org/ring.js" data-widget="cloud"></script>
+      <script
+        v-if="!IS_DEV"
+        src="https://transring.neocities.org/ring.js"
+        data-widget="cloud"
+      ></script>
     </nav>
   </header>
 </template>
