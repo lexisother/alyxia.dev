@@ -11,6 +11,7 @@ html::after {
   pointer-events: none;
 }
 
+// is somehow overridden by reset
 body {
-  margin-top: 6rem;
+  margin-top: 6rem !important;
 }
