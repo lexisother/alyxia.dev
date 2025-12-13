@@ -8,6 +8,36 @@ import "../styles/index.scss";
 
 <script>
 if (new Date().getMonth() === 11) {
+    const container = document.createElement('div');
+    container.classList.add('snow-container');
+    for (const _i of Array.from({ length: 150 })) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+
+        // Random horizontal position
+        snowflake.style.left = `${Math.random() * 100}%`;
+
+        // Random size
+        const size = `${Math.random() * 5 + 2}px`; // size between 5px and 10px
+        snowflake.style.width = size;
+        snowflake.style.height = size;
+
+        // Random animation duration and delay
+        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        snowflake.style.animationDelay = `${Math.random() * 5}s`;
+
+        // Randomize the horizontal movement
+        snowflake.style.setProperty('--random-x', `${Math.random()}`);
+
+        // Randomize opacity to create different shades of white
+        const opacity = Math.random() * 0.5 + 0.5; // between 0.5 and 1
+        snowflake.style.opacity = `${opacity}`;
+
+        // Append snowflake to container
+        container.appendChild(snowflake);
+    }
+    document.body.prepend(container);
+
     await import("../styles/jolly.scss");
 }
 </script>
