@@ -1,11 +1,16 @@
 ---
 import "../styles/index.scss";
+import jollyUrl from "../styles/jolly.scss?url";
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 <meta name="darkreader-lock" />
+
+<script is:inline define:vars={{ jollyUrl }}>
+    window.__jollyUrl = jollyUrl;
+</script>
 
 <script>
 if (new Date().getMonth() === 11) {
@@ -37,8 +42,18 @@ if (new Date().getMonth() === 11) {
         // Append snowflake to container
         container.appendChild(snowflake);
     }
-    document.body.prepend(container);
+    window.__snwcnt = container;
 
-    await import("../styles/jolly.scss");
+    const jollyLink = document.createElement("link");
+    jollyLink.href = window.__jollyUrl;
+    jollyLink.rel = "stylesheet";
+    document.head.append(jollyLink);
+}
+
+declare global {
+    interface Window {
+        __snwcnt: HTMLDivElement;
+        __jollyUrl: string;
+    }
 }
 </script>
