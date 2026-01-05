@@ -10,5 +10,10 @@ export default defineConfig({
   output: 'server',
   adapter: node({ mode: 'standalone' }),
   site: import.meta.env.PROD ? 'https://alyxia.dev' : 'http://localhost:4321',
-  integrations: [mdx(), sitemap(), vue()]
+  integrations: [mdx(), sitemap(), vue()],
+  vite: {
+    server: {
+      allowedHosts: '.coder.alyxia.dev' 
+    }
+  }
 });
