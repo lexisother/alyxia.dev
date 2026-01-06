@@ -1,6 +1,8 @@
 ---
 import "../styles/index.scss";
-import jollyUrl from "../styles/jolly.scss?url";
+import jollyStylesUrl from "../styles/jolly.scss?inline";
+
+const jollyMonth = new Date().getMonth() === 11;
 ---
 
 <meta charset="utf-8" />
@@ -8,52 +10,40 @@ import jollyUrl from "../styles/jolly.scss?url";
 <meta name="generator" content={Astro.generator} />
 <meta name="darkreader-lock" />
 
-<script is:inline define:vars={{ jollyUrl }}>
-    window.__jollyUrl = jollyUrl;
-</script>
-
-<script>
-if (new Date().getMonth() === 11) {
+{jollyMonth && (
+  <style is:inline set:html={jollyStylesUrl} />
+        
+  <script>
     const container = document.createElement('div');
     container.classList.add('snow-container');
+
     for (const _i of Array.from({ length: 150 })) {
-        const snowflake = document.createElement('div');
-        snowflake.classList.add('snowflake');
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
 
-        // Random horizontal position
-        snowflake.style.left = `${Math.random() * 100}%`;
+      // Random horizontal position
+      snowflake.style.left = `${Math.random() * 100}%`;
 
-        // Random size
-        const size = `${Math.random() * 5 + 2}px`; // size between 5px and 10px
-        snowflake.style.width = size;
-        snowflake.style.height = size;
+      // Random size
+      const size = `${Math.random() * 5 + 2}px`; // size between 5px and 10px
+      snowflake.style.width = size;
+      snowflake.style.height = size;
 
-        // Random animation duration and delay
-        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
-        snowflake.style.animationDelay = `${Math.random() * 5}s`;
+      // Random animation duration and delay
+      snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      snowflake.style.animationDelay = `${Math.random() * 5}s`;
 
-        // Randomize the horizontal movement
-        snowflake.style.setProperty('--random-x', `${Math.random()}`);
+      // Randomize the horizontal movement
+      snowflake.style.setProperty('--random-x', `${Math.random()}`);
 
-        // Randomize opacity to create different shades of white
-        const opacity = Math.random() * 0.5 + 0.5; // between 0.5 and 1
-        snowflake.style.opacity = `${opacity}`;
+      // Randomize opacity to create different shades of white
+      const opacity = Math.random() * 0.5 + 0.5; // between 0.5 and 1
+      snowflake.style.opacity = `${opacity}`;
 
-        // Append snowflake to container
-        container.appendChild(snowflake);
+      // Append snowflake to container
+      container.appendChild(snowflake);
     }
-    window.__snwcnt = container;
 
-    const jollyLink = document.createElement("link");
-    jollyLink.href = window.__jollyUrl;
-    jollyLink.rel = "stylesheet";
-    document.head.append(jollyLink);
-}
-
-declare global {
-    interface Window {
-        __snwcnt: HTMLDivElement;
-        __jollyUrl: string;
-    }
-}
-</script>
+    document.body.prepend(container);
+  </script>
+)}
