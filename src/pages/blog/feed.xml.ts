@@ -41,14 +41,14 @@ export async function GET(context: APIContext) {
 
   for (const post of blog) {
     let html = await container.renderToString(RSSRenderer, {
-      params: { id: post.slug }
+      params: { id: post.id }
     });
     html = await fixLinks(html, baseUrl);
 
     items.push({
       title: post.data.title,
       pubDate: new Date(post.data.created),
-      link: baseUrl + `/blog/${post.slug}`,
+      link: baseUrl + `/blog/${post.id}`,
       content: html
     });
   }

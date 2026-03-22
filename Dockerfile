@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:24-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
@@ -16,7 +16,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --shamefully-hois
 ENV ASTRO_TELEMETRY_DISABLED=1
 RUN pnpm run build
 
-FROM node:20 AS runtime
+FROM node:24 AS runtime
 
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
