@@ -24,7 +24,7 @@ const posts = (await getCollection("blog")).sort(
             return (
               <li>
                 <time datetime={dateStr}>{dateStr}</time>{" "}
-                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
               </li>
             );
           })}
