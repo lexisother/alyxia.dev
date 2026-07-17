@@ -57,6 +57,11 @@ let friends =
         , link = "https://maisy.moe"
         }
       , Friend::{
+        , name = "april"
+        , image = "april.png"
+        , link = "https://aprl.pet"
+      }
+      , Friend::{
         , name = "tasky"
         , image = "tasky.webp"
         , link = "https://tasky.nuxt.dev"
