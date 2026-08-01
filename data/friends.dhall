@@ -60,11 +60,16 @@ let friends =
         , name = "april"
         , image = "april.png"
         , link = "https://aprl.pet"
-      }
+        }
       , Friend::{
         , name = "tasky"
         , image = "tasky.webp"
         , link = "https://tasky.nuxt.dev"
+        }
+      , Friend::{
+        , name = "Kaya"
+        , image = "kaya.gif"
+        , link = "https://tired.moe"
         }
       , Friend::{
         , name = "maeve"
