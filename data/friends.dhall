@@ -62,6 +62,11 @@ let friends =
         , link = "https://aprl.pet"
         }
       , Friend::{
+        , name = "isabel"
+        , image = "isabel.gif"
+        , link = "https://isabelroses.com"
+        }
+      , Friend::{
         , name = "tasky"
         , image = "tasky.webp"
         , link = "https://tasky.nuxt.dev"
