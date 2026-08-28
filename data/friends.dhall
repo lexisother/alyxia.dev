@@ -34,7 +34,7 @@ let friends =
       , Friend::{
         , name = "Foko"
         , image = "foko.png"
-        , link = ""
+        , link = "https://hetman.at"
         }
       , Friend::{
         , name = "Lynne"
@@ -107,9 +107,9 @@ let friends =
         , link = "https://maggiepi.fyi"
         }
       , Friend::{
-        , name = "Aubrey"
-        , image = "aubrey.png"
-        , link = "https://aubrey.rs"
+        , name = "abigail"
+        , image = "abigail.png"
+        , link = "https://abigail.sh"
         }
       , Friend::{
         , name = "ida"
@@ -125,11 +125,6 @@ let friends =
         , name = "notnite"
         , image = "notnite.png"
         , link = "https://notnite.com"
-        }
-      , Friend::{
-        , name = "nta"
-        , image = "nta.png"
-        , link = "https://ntauthority.me"
         }
       , Friend::{
         , name = "prefetcher"
