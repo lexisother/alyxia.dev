@@ -149,6 +149,60 @@ i.emoji {
   image-rendering: pixelated;
 }
 
+.webrings {
+  display: flex;
+  flex-flow: column wrap;
+  row-gap: 2rem;
+}
+
+.app-icon-ring {
+  position: relative;
+  width: 88px;
+  height: 31px;
+  margin-inline: auto;
+}
+
+.app-icon-ring > a {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 16px;
+  height: 31px;
+}
+
+.app-icon-ring > .app-icon-ring-home {
+  left: 0;
+  width: 88px;
+}
+
+.app-icon-ring-previous {
+  left: 0;
+}
+
+.app-icon-ring-next {
+  left: 72px;
+}
+
+.app-icon-ring img {
+  display: block;
+}
+
+.app-icon-ring-arrow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.app-icon-ring-arrow:hover img:first-child,
+.app-icon-ring-arrow:focus-visible img:first-child {
+  opacity: 1;
+}
+
+.app-icon-ring-arrow:active img:last-child {
+  opacity: 1;
+}
+
 header {
   background: $darker-blue;
   border-radius: 0 $radius $radius 0;

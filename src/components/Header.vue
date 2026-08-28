@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import xmark from "/static/img/xmark-solid.svg?url";
-import aly from "/static/img/aly.png?url";
-import { nav as hnavs } from "../../data/data.json";
 import { useToggle } from "@vueuse/core";
+import { nav as hnavs } from "../../data/data.json";
+import aly from "/static/img/aly.png?url";
+import xmark from "/static/img/xmark-solid.svg?url";
+import AppIconWebring from './AppIconWebring.vue';
 
 let [opened, toggleOpen] = useToggle(false);
 const IS_DEV = import.meta.env.DEV;
@@ -32,11 +33,16 @@ const IS_DEV = import.meta.env.DEV;
           </li>
         </ul>
       </template>
-      <script
-        v-if="!IS_DEV"
-        src="https://transring.neocities.org/ring.js"
-        data-widget="cloud"
-      ></script>
+
+      <div class="webrings">
+        <script
+          v-if="!IS_DEV"
+          src="https://transring.neocities.org/ring.js"
+          data-widget="cloud"
+        ></script>
+
+        <AppIconWebring />
+      </div>
     </nav>
   </header>
 </template>
